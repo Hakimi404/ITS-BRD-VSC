@@ -19,34 +19,6 @@ int devicesCount = 0;
 bool tempReaded = false;
 
 ThermometerDS18B20 DS18B20[MAX_SUPPORTET_DEVICES];
-/*
-int sensorDS18B20ReadRom(){
-    DS18B20.romID = 0;
-    uint8_t byte = 0;
-    int rc = OK;
-    rc = oneWireReset();
-    if (rc != OK) {
-        return rc;
-    }
-    oneWireWriteByte(0x33);
-    for (int i = 0; i < 8; i++) {
-        rc = oneWireReadByte(&byte);
-        if (rc!=OK) {
-            return rc;
-        }
-        uint64_t temp = byte;
-        DS18B20.romID = DS18B20.romID | (temp << (8*i));
-        crcPackDS18B20[i] = (unsigned char) byte;
-    }
-    if (checkCRC(sizeof(crcPackDS18B20), crcPackDS18B20) == false) {
-        return ERR_BIT_FLIPPED;
-    }
-
-
-
-    return rc;
-}
-*/
 int sensorDS18B20SearchRom() {
   int rc = OK;
   rc = scanOneWireBus(deviceIDs, &devicesCount);
