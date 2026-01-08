@@ -1,120 +1,162 @@
 #include "ds18x20Common.h"
 #include "crc.h"
 #include "display.h"
-#include <locale.h>
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdlib.h>
 #include "global.h"
 
-#define PUSH_PULL_DURATION 750000
+#include <stdbool.h>
+#include <stdint.h>
 
-uint64_t oldRegistration = 0;
-uint64_t registration = 0;
-int lastDiscrepancy = -1;
-int newDiscrepancy = -1;
-bool lastDeviceFlag = 0;
-bool checkImProzess = false; 
-unsigned char crcPack[8];
 
-void sensorFullThrottle() {
+
+//Dauer für den starken Pull-Up (wichtig für Temperaturmessung)
+#define STRONG_PULLUP_TIME 750000
+
+//Variablen für den Search-ROM-Algorithmus
+static uint64_t previousRomId = 0;
+static uint64_t currentRomId  = 0;
+
+static int lastConflictBit    = -1;
+static int newConflictBit     = -1;
+
+static bool lastDeviceFound   = false;
+
+//Puffer für CRC-Berechnung
+static unsigned char crcBuffer[8];
+
+// Aktiviert einen starken Pull-Up auf dem 1-Wire-Bus Der DS18B20 benötigt während der Temperaturmessung mehr Strom, als der normale Pull-Up liefern kann
+ 
+void sensorFullThrottle(void)
+{
+    //PD0 kurzzeitig als Push-Pull schalten 
     GPIOD->OTYPER &= ~PD0_MASK;
+
+    //Leitung aktiv auf HIGH ziehen 
     GPIOD->BSRR = PD0_MASK;
-    wait(PUSH_PULL_DURATION);
+
+    //Starken Pull-Up für eine bestimmte Zeit halten
+    wait(STRONG_PULLUP_TIME);
+
+    //PD0 wieder auf Open-Drain zurückschalten
     GPIOD->OTYPER |= PD0_MASK;
 }
 
-int sensorSelect(uint64_t targetID) {
-    oneWireReset();
-    int rc = OK;
+/*
+ * Wählt genau einen Sensor anhand seiner 64-Bit-ROM-ID aus
+ * Nur dieser Sensor reagiert danach auf weitere Befehle
+ */
+int sensorSelect(uint64_t romId)
+{
+    int result = OK;
+
+    // 1-Wire-Bus zurücksetzen 
+    result = oneWireReset();
+    if (result != OK) {
+        return result;
+    }
+
+    //MATCH ROM Befehl senden
     oneWireWriteByte(0x55);
-    for (int i = 0; i < 8; i++) {
-        rc = oneWireWriteByte((uint8_t)((targetID >> (8*i))));
-        if (rc!=OK) {
-            return rc;
+
+    //ROM-ID Byte für Byte (LSB zuerst) senden
+    for (int byteIndex = 0; byteIndex < 8; byteIndex++) {
+        result = oneWireWriteByte((uint8_t)(romId >> (8 * byteIndex)));
+        if (result != OK) {
+            return result;
         }
     }
+
     return OK;
-
-}
-int prepareForCrcCheck() {
-    int rc = OK;
-    for (int i = 0; i < 8; i++) {
-        crcPack[i] = registration >> 8 * i;
-    }
-    rc = checkCRC(8, crcPack);
-    return rc;
 }
 
-int scanOneWireBus(uint64_t *deviceIDs, int* devicesCount){
-    int rc = OK;
-    lastDeviceFlag = false;
-    oldRegistration = 0;
-    registration = 0;
-    lastDiscrepancy = -1;
-    newDiscrepancy = -1;
-    lastDeviceFlag = 0;
+//Durchsucht den 1-Wire-Bus nach allen angeschlossenen Sensoren. Die gefundenen ROM-IDs werden im Array deviceIDs gespeichert
+ int scanOneWireBus(uint64_t *deviceIDs, int *deviceCount)
+{
+    int result = OK;
+
+    //Suchzustand zurücksetzen
+    lastDeviceFound = false;
+    previousRomId   = 0;
+    currentRomId    = 0;
+    lastConflictBit = -1;
+
     do {
-        rc = oneWireReset();
-        if (rc != OK) {
-            return rc;
-        }
-        rc = oneWireWriteByte(0xF0);
-        if (rc!=OK) {
-            return rc;
-        }
-        int bit1 = 0;
-        int bit2 = 0;
+        int bitZero = 0;
+        int bitOne  = 0;
+        uint64_t selectedBit = 0;
 
-        oldRegistration = registration;
-        registration = 0;
-        newDiscrepancy = -1;
-        uint64_t direction = 0;
-            for (int i = 0; i < 64; i++) {
-                oneWireReadBit(&bit1);
-                oneWireReadBit(&bit2);
-                if (bit1 == bit2 && bit1 == 1) {
-                    return ERR_NO_SENSOR;
+        //Bus vor jedem Suchdurchlauf zurücksetzen
+        result = oneWireReset();
+        if (result != OK) {
+            return result;
+        }
+
+        //SEARCH ROM Befehl senden
+        result = oneWireWriteByte(0xF0);
+        if (result != OK) {
+            return result;
+        }
+
+        //Vorbereitung für neue ROM-ID
+        previousRomId = currentRomId;
+        currentRomId  = 0;
+        newConflictBit = -1;
+
+        //Alle 64 Bits der ROM-ID abarbeiten
+        for (int bitIndex = 0; bitIndex < 64; bitIndex++) {
+
+            // Beide möglichen Bitwerte lesen
+            oneWireReadBit(&bitZero);
+            oneWireReadBit(&bitOne);
+
+            //Kein Sensor vorhanden
+            if (bitZero == 1 && bitOne == 1) {
+                return ERR_NO_SENSOR;
+            }
+
+            //Kein Konflikt → eindeutige Richtung
+            if (bitZero != bitOne) {
+                selectedBit = bitZero;
+            }
+            else {
+                //Konflikt: mindestens zwei Sensoren
+                if (bitIndex < lastConflictBit) {
+                    selectedBit = (previousRomId >> bitIndex) & 0x01U;
                 }
-                if (bit1 != bit2) { 
-                    direction = bit1;
-                } 
+                else if (bitIndex == lastConflictBit) {
+                    selectedBit = 1;
+                }
                 else {
-                    if (i < lastDiscrepancy) {
-                        direction = oldRegistration >> i & 0x01U;
-                    }
-                    else if (i == lastDiscrepancy) {
-                        direction = 1;
-                    }
-                    else if (i > lastDiscrepancy && bit1 == bit2 && bit1 == 0) {
-                        direction = 0;
-                    }
-                    if (direction == 0) {
-                        newDiscrepancy = i;
-                    }
+                    selectedBit = 0;
                 }
-                
-                oneWireWriteBit(direction);
-                registration |= direction << i;
+
+                //Neue Konfliktstelle merken
+                if (selectedBit == 0) {
+                    newConflictBit = bitIndex;
+                }
             }
 
-            lastDiscrepancy = newDiscrepancy;
+            //Gewähltes Bit auf den Bus schreiben
+            oneWireWriteBit(selectedBit);
 
-            if ((*devicesCount)< MAX_SUPPORTET_DEVICES) {
-                deviceIDs[(*devicesCount)] = registration;
-                (*devicesCount)++;
-            }
+            // Bit in aktueller ROM-ID speichern
+            currentRomId |= (selectedBit << bitIndex);
+        }
 
-            if (lastDiscrepancy == -1) {
-                lastDeviceFlag = true;
-            }
-           
-            if (rc != OK) {
-                return rc;
-            }
-    }
+        //Konfliktposition aktualisieren 
+        lastConflictBit = newConflictBit;
 
-    while (!lastDeviceFlag);
-    
+        //Gefundene ROM-ID speichern
+        if (*deviceCount < MAX_SUPPORTET_DEVICES) {
+            deviceIDs[*deviceCount] = currentRomId;
+            (*deviceCount)++;
+        }
+
+        //Keine weiteren Konflikte --> letztes Gerät gefunden
+        if (lastConflictBit == -1) {
+            lastDeviceFound = true;
+        }
+
+    } while (!lastDeviceFound);
+
     return OK;
 }
