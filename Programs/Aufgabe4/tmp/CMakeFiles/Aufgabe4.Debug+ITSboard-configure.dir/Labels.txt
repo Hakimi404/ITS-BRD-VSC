@@ -1,0 +1,10 @@
+# Target labels
+ Aufgabe4.Debug+ITSboard
+# Source files and their labels
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-configure
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-configure.rule
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-configure.rule
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-patch.rule
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-update.rule
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-download.rule
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-mkdir.rule

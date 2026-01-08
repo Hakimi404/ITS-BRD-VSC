@@ -1,0 +1,8 @@
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/database.dir
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard.dir
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-build.dir
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-configure.dir
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-executes.dir
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-database.dir
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/edit_cache.dir
+C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/rebuild_cache.dir

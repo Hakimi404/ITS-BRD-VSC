@@ -1,0 +1,11 @@
+# Target labels
+ Aufgabe2.Debug+ITSboard
+# Source files and their labels
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/CMakeFiles/Aufgabe2.Debug+ITSboard-database
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/CMakeFiles/Aufgabe2.Debug+ITSboard-database.rule
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/Aufgabe2.Debug+ITSboard/src/Aufgabe2.Debug+ITSboard-stamp/Aufgabe2.Debug+ITSboard-database.rule
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/Aufgabe2.Debug+ITSboard/src/Aufgabe2.Debug+ITSboard-stamp/Aufgabe2.Debug+ITSboard-configure.rule
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/Aufgabe2.Debug+ITSboard/src/Aufgabe2.Debug+ITSboard-stamp/Aufgabe2.Debug+ITSboard-patch.rule
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/Aufgabe2.Debug+ITSboard/src/Aufgabe2.Debug+ITSboard-stamp/Aufgabe2.Debug+ITSboard-update.rule
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/Aufgabe2.Debug+ITSboard/src/Aufgabe2.Debug+ITSboard-stamp/Aufgabe2.Debug+ITSboard-download.rule
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/Aufgabe2.Debug+ITSboard/src/Aufgabe2.Debug+ITSboard-stamp/Aufgabe2.Debug+ITSboard-mkdir.rule

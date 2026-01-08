@@ -1,0 +1,21 @@
+build-idx:
+  generated-by: csolution version 2.12.0
+  cdefault: ${CMSIS_COMPILER_ROOT}/cdefault.yml
+  csolution: Aufgabe1.csolution.yml
+  cbuild-run: out/Aufgabe1+ITSboard.cbuild-run.yml
+  tmpdir: tmp
+  cprojects:
+    - cproject: Aufgabe1.cproject.yml
+  cbuilds:
+    - cbuild: out/Aufgabe1/ITSboard/Debug/Aufgabe1.Debug+ITSboard.cbuild.yml
+      project: Aufgabe1
+      configuration: .Debug+ITSboard
+      messages:
+        info:
+          - Aufgabe1.cbuild-pack.yml - file is already up-to-date
+          - "RTE Model reports:\nConstructed file C:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe1/RTE/_Debug_ITSboard/RTE_Components.h was recreated"
+          - Aufgabe1+ITSboard.cbuild-run.yml - file is already up-to-date
+          - Aufgabe1.Debug+ITSboard.cbuild.yml - file generated successfully
+      packs-unused:
+        - pack: ARM::CMSIS-DSP@1.16.2
+        - pack: ARM::CMSIS-NN@6.0.0

@@ -1,0 +1,22 @@
+build-idx:
+  generated-by: csolution version 2.12.0+p41-gfeadfc5e
+  cdefault: ${CMSIS_COMPILER_ROOT}/cdefault.yml
+  csolution: Aufgabe3.csolution.yml
+  cbuild-run: out/Aufgabe3+ITSboard.cbuild-run.yml
+  tmpdir: tmp
+  cprojects:
+    - cproject: Aufgabe3.cproject.yml
+  cbuilds:
+    - cbuild: out/Aufgabe3/ITSboard/Debug/Aufgabe3.Debug+ITSboard.cbuild.yml
+      project: Aufgabe3
+      configuration: .Debug+ITSboard
+      messages:
+        warnings:
+          - no compiler registered. Add path to compiler 'bin' directory with environment variable <name>_TOOLCHAIN_<major>_<minor>_<patch>. <name> is one of AC6, GCC, IAR, CLANG
+        info:
+          - Aufgabe3.cbuild-pack.yml - file is already up-to-date
+          - Aufgabe3+ITSboard.cbuild-run.yml - file is already up-to-date
+          - Aufgabe3.Debug+ITSboard.cbuild.yml - file is already up-to-date
+      packs-unused:
+        - pack: ARM::CMSIS-DSP@1.16.2
+        - pack: ARM::CMSIS-NN@6.0.0

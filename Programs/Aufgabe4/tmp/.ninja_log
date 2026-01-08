@@ -1,0 +1,13 @@
+# ninja log v6
+5	125	7895625235928904	Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-mkdir	8de4f025d190fa9a
+5	125	7895625235928904	C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-mkdir	8de4f025d190fa9a
+126	232	7895625236988962	Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-download	19f820ec319e1ec
+126	232	7895625236988962	C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-download	19f820ec319e1ec
+232	330	7895625237864911	Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-update	485c47c8c161eb4a
+232	330	7895625237864911	C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-update	485c47c8c161eb4a
+330	456	7895625239226239	Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-patch	4fd6f6b4a3ee4a22
+330	456	7895625239226239	C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-patch	4fd6f6b4a3ee4a22
+456	5992	7895625294601672	Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-configure	e4f64c1c10f8e360
+456	5992	7895625294601672	C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-configure	e4f64c1c10f8e360
+5992	6236	7895625294681674	Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-database	7b3d13b52d9d9ec9
+5992	6236	7895625294681674	C:/Users/infwtx851/GSWS_AA/ITS-BRD-VSC/Programs/Aufgabe4/tmp/Aufgabe4.Debug+ITSboard/src/Aufgabe4.Debug+ITSboard-stamp/Aufgabe4.Debug+ITSboard-database	7b3d13b52d9d9ec9

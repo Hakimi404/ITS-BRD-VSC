@@ -1,0 +1,30 @@
+build-idx:
+  generated-by: csolution version 2.12.0
+  cdefault: ${CMSIS_COMPILER_ROOT}/cdefault.yml
+  csolution: Stack.csolution.yml
+  tmpdir: tmp
+  cprojects:
+    - cproject: Stack.cproject.yml
+  cbuilds:
+    - cbuild: out/Stack/ITSboard/Debug/Stack.Debug+ITSboard.cbuild.yml
+      project: Stack
+      configuration: .Debug+ITSboard
+      errors: true
+      messages:
+        errors:
+          - "required pack: ARM::CMSIS-DSP not installed"
+          - "required pack: ARM::CMSIS-NN not installed"
+          - "required pack: Keil::STM32F4xx_DFP not installed"
+          - "required pack: Keil::STM32F4xx_DFP@2.17.1 not installed"
+          - "required pack: Keil::STM32NUCLEO_BSP@1.8.1 not installed"
+          - board 'STMicroelectronics::NUCLEO-F429ZI:Rev.B' was not found
+          - processing context 'Stack.Debug+ITSboard' failed
+        info:
+          - Stack.cbuild-pack.yml - file generated successfully
+          - Stack.Debug+ITSboard.cbuild.yml - file generated successfully
+      packs-missing:
+        - pack: Keil::STM32NUCLEO_BSP@1.8.1
+        - pack: Keil::STM32F4xx_DFP@2.17.1
+        - pack: Keil::STM32F4xx_DFP
+        - pack: ARM::CMSIS-NN
+        - pack: ARM::CMSIS-DSP

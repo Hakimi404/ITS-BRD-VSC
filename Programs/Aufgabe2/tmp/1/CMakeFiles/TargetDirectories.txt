@@ -1,0 +1,11 @@
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/database.dir
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/Aufgabe2.Debug+ITSboard.dir
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/Group_Drivers_BSP_STM32F4xx_Nucleo_144.dir
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/Group_Drivers_Board.dir
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/Group_Drivers_STM32F4xx_HAL_Driver.dir
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/Group_Utils.dir
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/Group_LCD.dir
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/Group_ITS_BRD_LIB.dir
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/Group_Program_User_Src.dir
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/edit_cache.dir
+C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/1/CMakeFiles/rebuild_cache.dir

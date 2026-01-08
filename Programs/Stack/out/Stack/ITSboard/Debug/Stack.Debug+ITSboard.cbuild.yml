@@ -1,0 +1,100 @@
+build:
+  generated-by: csolution version 2.12.0
+  solution: ../../../../Stack.csolution.yml
+  project: ../../../../Stack.cproject.yml
+  context: Stack.Debug+ITSboard
+  compiler: AC6
+  optimize: none
+  debug: on
+  misc:
+    ASM:
+      - -masm=auto
+    C:
+      - -std=gnu11
+      - -Wno-macro-redefined
+      - -Wno-pragma-pack
+      - -Wno-parentheses-equality
+      - -Wno-license-management
+      - -std=c99
+      - -fno-rtti
+      - -funsigned-char
+      - -fshort-enums
+      - -fshort-wchar
+      - -ffunction-sections
+      - -Wno-packed
+      - -Wno-missing-variable-declarations
+      - -Wno-missing-prototypes
+      - -Wno-missing-noreturn
+      - -Wno-sign-conversion
+      - -Wno-nonportable-include-path
+      - -Wno-reserved-id-macro
+      - -Wno-unused-macros
+      - -Wno-documentation-unknown-command
+      - -Wno-documentation
+    CPP:
+      - -Wno-macro-redefined
+      - -Wno-pragma-pack
+      - -Wno-parentheses-equality
+      - -Wno-license-management
+      - -xc++
+      - -std=c++11
+      - -fno-rtti
+      - -funsigned-char
+      - -fshort-enums
+      - -fshort-wchar
+      - -ffunction-sections
+      - -Wno-packed
+      - -Wno-missing-variable-declarations
+      - -Wno-missing-prototypes
+      - -Wno-missing-noreturn
+      - -Wno-sign-conversion
+      - -Wno-nonportable-include-path
+      - -Wno-reserved-id-macro
+      - -Wno-unused-macros
+      - -Wno-documentation-unknown-command
+      - -Wno-documentation
+    Link:
+      - --entry=Reset_Handler
+      - --info=summarysizes
+      - --summary_stderr
+      - --diag_suppress=L6314W
+      - --library_type=microlib
+      - --map
+      - --load_addr_map_info
+      - --xref
+      - --callgraph
+      - --symbols
+      - --info sizes
+      - --info totals
+      - --info unused
+      - --info veneers
+      - --diag_suppress=L6329
+      - --strict
+      - --info summarysizes
+  define:
+    - STM32F429xx
+    - USE_HAL_DRIVER
+    - USE_STM32F4XX_NUCLEO_144
+    - __MICROLIB
+  define-asm:
+    - __MICROLIB
+  add-path:
+    - ../../../../Inc
+    - ../../../../../../stm32cubef4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    - ../../../../../../stm32cubef4/Drivers/CMSIS/Include
+    - ../../../../../../stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Inc
+    - ../../../../../../stm32cubef4/Drivers/BSP/STM32F4xx_Nucleo_144
+    - ../../../../../../stm32cubef4/Utilities/Fonts
+    - ../../../../../../DisplayWaveshare/Inc
+    - ../../../../../../ITS_BRD_LIB/Inc
+    - ../../../../../../ITS_BRD_LIB/Utilities/AddFonts
+    - ../../../../../../lwip
+    - ../../../../../../lwip/src/include
+    - ../../../../../../lwip/src/include/lwip
+  output-dirs:
+    intdir: ../../../../tmp
+    outdir: .
+    rtedir: ../../../../RTE
+  output:
+    - type: elf
+      file: Stack.axf

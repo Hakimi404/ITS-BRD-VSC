@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Users\\youse\\OneDrive\\Dokumente\\GitHub\\ITS-BRD-VSC\\Programs\\Aufgabe1\\out\\Aufgabe1\\ITSboard\\Debug"
+    ]
+}

@@ -1,0 +1,28 @@
+CompileFlags:
+  CompilationDatabase: d:\GSWS\ITS-BRD-VSC\Programs\Aufgabe3\out\Aufgabe3\ITSboard\Debug
+  Add:
+    - '-IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/Inc'
+    - >-
+      -IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/../../stm32cubef4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    - >-
+      -IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/../../stm32cubef4/Drivers/CMSIS/Include
+    - >-
+      -IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/../../stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Inc
+    - >-
+      -IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/../../stm32cubef4/Drivers/BSP/STM32F4xx_Nucleo_144
+    - >-
+      -IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/../../stm32cubef4/Utilities/Fonts
+    - >-
+      -IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/../../DisplayWaveshare/Inc
+    - >-
+      -IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/../../ITS_BRD_LIB/Utilities/AddFonts
+    - >-
+      -IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/tmp/Aufgabe3.Debug+ITSboard
+    - >-
+      -IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/RTE/_Debug_ITSboard
+    - >-
+      -IC:/Users/infwtx851.AD-AILAB1.000/AppData/Local/arm/packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include
+    - >-
+      -IC:/Users/infwtx851.AD-AILAB1.000/AppData/Local/arm/packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    - >-
+      -IC:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe3/../../ITS_BRD_LIB/Inc

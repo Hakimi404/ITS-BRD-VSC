@@ -1,0 +1,11 @@
+-- The C compiler identification is ARMClang 6.24.0
+-- The ASM compiler identification is ARMClang
+-- Found assembler: c:/Users/infwtx851.AD-AILAB1.000/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin//armclang.exe
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: c:/Users/infwtx851.AD-AILAB1.000/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin//armclang.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (5.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/Users/infwtx851/GSWS/ITS-BRD-VSC/Programs/Aufgabe1/tmp/1
