@@ -1,24 +1,24 @@
 cmake_minimum_required(VERSION 3.27)
 include(ExternalProject)
 	
-project("Aufgabe2" NONE)
+project("Aufgabe5" NONE)
 
 # Roots
 include("roots.cmake")
 
 # Context specific lists
 set(CONTEXTS
-  "Aufgabe2.Debug+ITSboard"
+  "Aufgabe5.Debug+ITSboard"
 )
 list(LENGTH CONTEXTS CONTEXTS_LENGTH)
 math(EXPR CONTEXTS_LENGTH "${CONTEXTS_LENGTH}-1")
 
 set(DIRS
-  "${CMAKE_CURRENT_SOURCE_DIR}/Aufgabe2.Debug+ITSboard"
+  "${CMAKE_CURRENT_SOURCE_DIR}/Aufgabe5.Debug+ITSboard"
 )
 
 set(OUTPUTS_1
-  "${SOLUTION_ROOT}/out/Aufgabe2/ITSboard/Debug/Aufgabe2.axf"
+  "${SOLUTION_ROOT}/out/Aufgabe5/ITSboard/Debug/Aufgabe5.axf"
 )
 
 set(ARGS

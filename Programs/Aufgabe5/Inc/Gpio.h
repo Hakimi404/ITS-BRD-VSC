@@ -11,7 +11,14 @@
 #define D21 (1 << 5)
 #define D22 (1 << 6)
 #define D23 (1 << 7)
+#define AUX_PORT GPIOF
+#define AUX0     0
+#define AUX1     1
 
 int readGPIOPin(GPIO_TypeDef *GPIOx, int pin);
+
+void initEncoderInterrupts(void);
+
+
 
 #endif

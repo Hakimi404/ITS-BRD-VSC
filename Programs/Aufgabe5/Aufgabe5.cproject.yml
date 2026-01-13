@@ -178,6 +178,11 @@ project:
     - group: Program/User/Src
       files:
         - file: Src/main.c
+        - file: Src/berechnung.c
+        - file: Src/error_drehgeber.c
+        - file: Src/Gpio.c
+        - file: Src/input.c
+        - file: Src/output.c
 
 
   components:

@@ -9,27 +9,39 @@
 #include "output.h"
 #include "error_drehgeber.h"
 #include "timer.h"
+#include "gpio.h"
 #include <stdio.h>
 
 #define OUTPUT_SIZE 8
 
-int main(void) { //Steuert den Super Loop, die Zeitmessung und die Display Ausgabe
-    int input = 0, output = 0, phasen = 0, reset = 0;
-    double winkel = 0, geschw = 0;
+int main(void)
+{
+    /* application values */
+    int phasen = 0;
+    double winkel = 0.0;
+    double geschw = 0.0;
+    int reset = 0;
     int print_idx = 0;
-    uint32_t timer_ticks = 0;
 
+    /* double-read variables (ISR safety) */
+    uint32_t ts1, ts2;
+    int32_t  c1, c2;
+    uint32_t timestamp = 0;
+    int tries = 0;
+
+    /* display buffers */
     char old_winkel[OUTPUT_SIZE] = {0};
     char old_geschw[OUTPUT_SIZE] = {0};
     char buf_winkel[OUTPUT_SIZE];
     char buf_geschw[OUTPUT_SIZE];
 
-    // Initialisierung der Hardware
+    /* ===== Hardware init ===== */
     initITSboard();
+    initEncoderInterrupts();      // 
     GUI_init(DEFAULT_BRIGHTNESS);
     initTimer();
 
-    //Bildschirm vorbereiten 
+    /* ===== Display init ===== */
     lcdGotoXY(0, 0);
     lcdSetFont(16);
     lcdPrintS("...");
@@ -41,66 +53,75 @@ int main(void) { //Steuert den Super Loop, die Zeitmessung und die Display Ausga
     lcdGotoXY(0, 2);
     lcdPrintS("Geschwindigkeit (Grad/s):");
 
-    //Hauptschleife Super loop
-    while (1) {
-        input = input_einlesen();
+    /* ================= MAIN LOOP ================= */
+    while (1)
+    {
+        /* ----- Reset button S7 (polling allowed) ----- */
         reset = resetpressed();
-        output = phasen_ueberpruefung(input, reset);
-        timer_ticks = getTimeStamp();
+        if (reset)
+        {
+            reset_system();
 
-        //Reset für S7
-       if (reset) {
-    reset_system();  // FSM und Zähler zurücksetzen
+            lcdGotoXY(26, 0);
+            lcdPrintS("  0.0   ");
+            lcdGotoXY(26, 2);
+            lcdPrintS("  0.0   ");
 
-    //Display aufräumen
-    lcdGotoXY(26, 0);
-    lcdPrintS("  0.0   ");
-    lcdGotoXY(26, 2);
-    lcdPrintS("  0.0   ");
+            led_keine_aenderung();
+            led_fehler_reset();
 
-    // LEDs zurücksetzen
-    led_keine_aenderung();
-    led_fehler_reset();
+            for (int i = 0; i < OUTPUT_SIZE; i++) {
+                old_winkel[i] = ' ';
+                old_geschw[i] = ' ';
+            }
+            continue;
+        }
 
-    //Buffer zurücksetzen für sauberen Neustart
-    for (int i = 0; i < OUTPUT_SIZE; i++) {
-        old_winkel[i] = ' ';
-        old_geschw[i] = ' ';
-    }
+        /* ----- Double-read protection (MANDATORY) ----- */
+        tries = 0;
+        do {
+            ts1 = encoder_timestamp;
+            c1  = encoder_phase_count;
+            ts2 = encoder_timestamp;
+            c2  = encoder_phase_count;
+            tries++;
+        } while ((ts1 != ts2 || c1 != c2) && tries < 10);
 
-    continue; //Springt zum Anfang der while Schleife
-}
+        if (tries >= 10) {
+            error_number(PHASEUEBERSPRUNGEN);
+            continue;
+        }
 
-        //Berechnungen
-        phasen = getphasen();
+        timestamp = ts1;
+        phasen    = c1;
+
+        /* ----- Calculations (main context only) ----- */
         winkel = get_winkel();
-        geschw = get_winkelgeschw(timer_ticks, winkel, output == 0);
+        geschw = get_winkelgeschw(timestamp, winkel, 1);
 
-        if (print_idx == 0) { //Die Werte nur am Anfang eines Ausgabe Zyklus erstellen
+        /* ----- Display update (unchanged logic) ----- */
+        if (print_idx == 0) {
             snprintf(buf_winkel, OUTPUT_SIZE, "%7.1f", winkel);
             snprintf(buf_geschw, OUTPUT_SIZE, "%7.1f", geschw);
         }
-            //Winkel: Nur schreiben, wenn sich das Zeichen geändert hat
+
         if (buf_winkel[print_idx] != old_winkel[print_idx]) {
             old_winkel[print_idx] = buf_winkel[print_idx];
             lcdGotoXY(26 + print_idx, 0);
             lcdPrintC(buf_winkel[print_idx]);
         }
-            //Geschwindigkeit: Nur schreiben, wenn sich das Zeichen geändert hat
+
         if (buf_geschw[print_idx] != old_geschw[print_idx]) {
             old_geschw[print_idx] = buf_geschw[print_idx];
             lcdGotoXY(26 + print_idx, 2);
             lcdPrintC(buf_geschw[print_idx]);
         }
-            // Index für nächsten Durchlauf erhöhen
-        print_idx++;
-        if (print_idx == OUTPUT_SIZE - 1) {
-            print_idx = 0;
-        }
-            //Fehlerbehandlung
-        if (output == PHASEUEBERSPRUNGEN)
-            error_number(output);
 
-        led_counter(phasen); ///LED Ausgabe
+        print_idx++;
+        if (print_idx == OUTPUT_SIZE - 1)
+            print_idx = 0;
+
+        /* ----- LED output ----- */
+        led_counter(phasen);
     }
 }

@@ -1,8 +1,8 @@
-C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/CMakeFiles/database.dir
-C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/CMakeFiles/Aufgabe2.Debug+ITSboard.dir
-C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/CMakeFiles/Aufgabe2.Debug+ITSboard-build.dir
-C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/CMakeFiles/Aufgabe2.Debug+ITSboard-configure.dir
-C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/CMakeFiles/Aufgabe2.Debug+ITSboard-executes.dir
-C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/CMakeFiles/Aufgabe2.Debug+ITSboard-database.dir
-C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/CMakeFiles/edit_cache.dir
-C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/CMakeFiles/rebuild_cache.dir
+D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/CMakeFiles/database.dir
+D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/CMakeFiles/Aufgabe5.Debug+ITSboard.dir
+D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/CMakeFiles/Aufgabe5.Debug+ITSboard-build.dir
+D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/CMakeFiles/Aufgabe5.Debug+ITSboard-configure.dir
+D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/CMakeFiles/Aufgabe5.Debug+ITSboard-executes.dir
+D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/CMakeFiles/Aufgabe5.Debug+ITSboard-database.dir
+D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/CMakeFiles/edit_cache.dir
+D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/CMakeFiles/rebuild_cache.dir

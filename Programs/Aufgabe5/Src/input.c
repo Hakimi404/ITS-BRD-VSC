@@ -1,33 +1,45 @@
 #include "input.h"
 #include "gpio.h"
-#include "berechnung.h"
 #include "timer.h"
-#include <stdbool.h>
+#include <stdint.h>
 
-#define MAX 90000000
-unsigned int aft = 0, bef = 0, time = 0;
+/* ===== Shared encoder state ===== */
+volatile uint32_t encoder_timestamp = 0;
+volatile int32_t  encoder_phase_count = 0;
+static uint8_t    last_phase = 0;
 
-int input_einlesen() {
-    aft = TIM2->CNT; // Den aktuellen Timer Wert holen
-    time += aft - bef; // Die verstrichene Zeit aufaddieren
-    bef = aft; // Der Referenzwert für den nächsten Aufruf setzen
-
-    /*int s0 = readGPIOPin(BUTTON_PORT, S0);
-    int s1 = readGPIOPin(BUTTON_PORT, S1);
-
-    if (!s0 && !s1) return PHASE_A;
-    if (s0 && !s1)  return PHASE_B;
-    if (s0 && s1)   return PHASE_C;
-    if (!s0 && s1)  return PHASE_D;*/
-    return GPIOF->IDR & 0x03; //Maskiert die unteren 2 Bits (IN0, IN1) von Port F
+/* ===== Fast phase decoder ===== */
+static inline int8_t decode_phase(uint8_t old, uint8_t now)
+{
+    static const int8_t table[16] = {
+         0, -1,  1,  0,
+         1,  0,  0, -1,
+        -1,  0,  0,  1,
+         0,  1, -1,  0
+    };
+    return table[(old << 2) | now];
 }
-//Prüft ob das Zeitlimit überschritten wurde
-int inputzeit() {
-    if (time >= MAX) { time = 0; return 1; }
-    return 0;
+
+/* ===== Encoder ISR logic ===== */
+void encoder_isr(void)
+{
+    uint32_t now = getTimeStamp();   // timestamp FIRST
+
+    uint8_t a = readGPIOPin(AUX_PORT, AUX0);
+    uint8_t b = readGPIOPin(AUX_PORT, AUX1);
+    uint8_t phase = (a << 1) | b;
+
+    int8_t step = decode_phase(last_phase, phase);
+
+    if (step != 0) {
+        encoder_phase_count += step;
+        encoder_timestamp = now;
+        last_phase = phase;
+    }
 }
-//Prüft Taster S7
-bool resetpressed() {
-    int s7 = readGPIOPin(BUTTON_PORT, S7);
-    return (s7 == 0);
+
+/* ===== Reset button S7 ===== */
+bool resetpressed(void)
+{
+    return (readGPIOPin(BUTTON_PORT, S7) == 0);
 }
