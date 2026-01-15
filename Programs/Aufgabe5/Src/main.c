@@ -35,13 +35,13 @@ int main(void)
     char buf_winkel[OUTPUT_SIZE];
     char buf_geschw[OUTPUT_SIZE];
 
-    /* ===== Hardware init ===== */
+    //Hardware init 
     initITSboard();
-    initEncoderInterrupts();      // 
+    initEncoderInterrupts();      
     GUI_init(DEFAULT_BRIGHTNESS);
     initTimer();
 
-    /* ===== Display init ===== */
+    //Display init
     lcdGotoXY(0, 0);
     lcdSetFont(16);
     lcdPrintS("...");
@@ -53,10 +53,10 @@ int main(void)
     lcdGotoXY(0, 2);
     lcdPrintS("Geschwindigkeit (Grad/s):");
 
-    /* ================= MAIN LOOP ================= */
+    //MAIN LOOP 
     while (1)
     {
-        /* ----- Reset button S7 (polling allowed) ----- */
+        // Reset button S7 (polling allowed)
         reset = resetpressed();
         if (reset)
         {
@@ -77,7 +77,7 @@ int main(void)
             continue;
         }
 
-        /* ----- Double-read protection (MANDATORY) ----- */
+        // Double-read protection (MANDATORY)
         tries = 0;
         do {
             ts1 = encoder_timestamp;
@@ -95,11 +95,11 @@ int main(void)
         timestamp = ts1;
         phasen    = c1;
 
-        /* ----- Calculations (main context only) ----- */
+        // Calculations
         winkel = get_winkel();
         geschw = get_winkelgeschw(timestamp, winkel, 1);
 
-        /* ----- Display update (unchanged logic) ----- */
+        // Display update (unchanged logic)
         if (print_idx == 0) {
             snprintf(buf_winkel, OUTPUT_SIZE, "%7.1f", winkel);
             snprintf(buf_geschw, OUTPUT_SIZE, "%7.1f", geschw);
@@ -121,7 +121,7 @@ int main(void)
         if (print_idx == OUTPUT_SIZE - 1)
             print_idx = 0;
 
-        /* ----- LED output ----- */
+        //LED output
         led_counter(phasen);
     }
 }
