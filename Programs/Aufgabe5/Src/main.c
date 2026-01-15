@@ -16,20 +16,20 @@
 
 int main(void)
 {
-    /* application values */
+    //application values
     int phasen = 0;
     double winkel = 0.0;
     double geschw = 0.0;
     int reset = 0;
     int print_idx = 0;
 
-    /* double-read variables (ISR safety) */
+    //double-read variables (ISR sicherheit)
     uint32_t ts1, ts2;
     int32_t  c1, c2;
     uint32_t timestamp = 0;
     int tries = 0;
 
-    /* display buffers */
+    //display buffers
     char old_winkel[OUTPUT_SIZE] = {0};
     char old_geschw[OUTPUT_SIZE] = {0};
     char buf_winkel[OUTPUT_SIZE];
