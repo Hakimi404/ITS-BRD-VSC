@@ -345,7 +345,7 @@ build:
           category: sourceC
         - file: ../../../../Src/sensorDS18S20.c
           category: sourceC
-        - file: ../../../../Src/math.c
+        - file: ../../../../Src/mathe.c
           category: sourceC
   constructed-files:
     - file: ../../../../RTE/_Debug_ITSboard/RTE_Components.h

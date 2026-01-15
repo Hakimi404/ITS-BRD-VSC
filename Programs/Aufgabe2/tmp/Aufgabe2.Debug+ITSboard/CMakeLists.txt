@@ -151,4 +151,5 @@ target_link_options(${CONTEXT} PUBLIC
   "SHELL:--strict"
   "SHELL:--info summarysizes"
 )
-set_target_properties(${CONTEXT} PROPERTIES LINK_DEPENDS ${LD_SCRIPT})
+set(LD_DEPS ${LD_SCRIPT})
+set_target_properties(${CONTEXT} PROPERTIES LINK_DEPENDS "${LD_DEPS}")

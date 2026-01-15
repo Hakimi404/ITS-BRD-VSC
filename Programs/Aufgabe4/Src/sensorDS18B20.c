@@ -5,7 +5,7 @@
 #include "errCodes.h"
 #include "global.h"
 #include "lcd.h"
-#include "math.h"
+#include "mathe.h"
 #include "onewire.h"
 #include "timing.h"
 
@@ -18,29 +18,24 @@ static unsigned char scratchpadData[9];
 
 //Gefundene Sensor-IDs
 static uint64_t foundDeviceIds[MAX_SUPPORTET_DEVICES];
-static int numberOfDevices = 0;
 
 //Status: Wurde Temperatur bereits gelesen?
 static bool temperatureReadDone = false;
 
-//Datenstruktur für alle DS18B20 Sensoren
-static ThermometerDS18B20 sensors[MAX_SUPPORTET_DEVICES];
-
-//Sucht alle DS18B20 Sensoren auf dem 1-Wire-Bus und speichert deren ROM-IDs
-int sensorDS18B20SearchRom(void)
+//Sucht alle DS18B20 Sensoren auf dem 1-Wire-Bus und speichert deren ROM-IDss
+int sensorDS18B20SearchRom(ThermometerDS18B20 *sensors, int *sensorCount)
 {
     int result = OK;
 
     //Suche alle Geräte auf dem Bus
-    result = scanOneWireBus(foundDeviceIds, &numberOfDevices);
+    result = scanOneWireBus(foundDeviceIds, sensorCount);
     if (result != OK) {
         return result;
     }
 
     //ROM-IDs übernehmen und auf dem Display anzeigen
-    for (int i = 0; i < numberOfDevices; i++) {
+    for (int i = 0; i < *sensorCount; i++) {
         sensors[i].romID = foundDeviceIds[i];
-        drawInfo("DS18B20", sensors[i].romID, i + 1);
     }
 
     return OK;
@@ -48,7 +43,7 @@ int sensorDS18B20SearchRom(void)
 
 //Wandelt die Scratchpad-Daten in die Sensor-Datenstruktur um
  
-static int sensorDS18B20ParseScratchpad(int sensorIndex)
+static int sensorDS18B20ParseScratchpad(ThermometerDS18B20* sensors, int sensorCount, int sensorIndex)
 {
     sensors[sensorIndex].raw.temperature =
         scratchpadData[0] | (scratchpadData[1] << 8);
@@ -66,7 +61,7 @@ static int sensorDS18B20ParseScratchpad(int sensorIndex)
 
 //Liest die Scratchpad-Daten eines einzelnen Sensors.
  
-static int sensorDS18B20ReadScratchpad(int sensorIndex)
+static int sensorDS18B20ReadScratchpad(ThermometerDS18B20* sensors, int sensorCount, int sensorIndex)
 {
     uint8_t readByte = 0;
     int result = OK;
@@ -89,14 +84,14 @@ static int sensorDS18B20ReadScratchpad(int sensorIndex)
     }
 
     //Daten übernehmen 
-    return sensorDS18B20ParseScratchpad(sensorIndex);
+    return sensorDS18B20ParseScratchpad(sensors, sensorCount, sensorIndex);
 }
 
 /*
  * Hauptfunktion zur Temperaturmessung und Anzeige.
  * Diese Funktion wird zyklisch aus main() aufgerufen.
  */
-int sensorDS18B20GetTemperature(void)
+int sensorDS18B20GetTemperature(ThermometerDS18B20* sensors, int sensorCount)
 {
     int result = OK;
 
@@ -112,34 +107,34 @@ int sensorDS18B20GetTemperature(void)
         sensorFullThrottle();
 
         //Jeden Sensor einzeln auslesen
-        for (int i = 0; i < numberOfDevices; i++) {
+        for (int i = 0; i < sensorCount; i++) {
 
             result = sensorSelect(sensors[i].romID);
             if (result != OK) {
                 return result;
             }
 
-            result = sensorDS18B20ReadScratchpad(i);
+            result = sensorDS18B20ReadScratchpad(sensors, sensorCount, i);
             if (result != OK) {
                 return result;
             }
         }
 
         //Rohwerte in Grad Celsius umrechnen 
-        result = tempCalcCelciusDS18B20(sensors, numberOfDevices);
+        result = tempCalcCelciusDS18B20(sensors, sensorCount);
         if (result != OK) {
             return result;
         }
 
         // Werte für Anzeige vorbereiten
-        convertAllValuesToDisplay(sensors, numberOfDevices);
+        convertAllValuesToDisplay(sensors, sensorCount);
 
         temperatureReadDone = true;
     }
 
     //Temperaturen schrittweise auf dem Display anzeigen 
     if (temperatureReadDone) {
-        drawTemperatureDS18B20(numberOfDevices, &temperatureReadDone);
+        drawTemperatureDS18B20(sensorCount, &temperatureReadDone);
     }
 
     return OK;

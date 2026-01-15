@@ -2,7 +2,7 @@
 #include "onewire.h"
 #include "ds18x20Common.h"
 #include "crc.h"
-#include "math.h"
+#include "mathe.h"
 #include "lcd.h"
 #include "errCodes.h"
 #include "global.h"

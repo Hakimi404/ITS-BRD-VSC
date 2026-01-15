@@ -23,6 +23,9 @@
 #include "timing.h"
 #include "errorStatus.h"
 
+#define MAX_SENSOR_COUNT  20
+
+static ThermometerDS18B20 sensors[MAX_SENSOR_COUNT];
 
 int main(void) {
 	initITSboard();    // Initialisierung des ITS Boards
@@ -32,13 +35,18 @@ int main(void) {
   initTimer();
   initDisplay();
   int rc = OK;
-  rc = sensorDS18B20SearchRom();
-	if (rc!=OK) {
-      indicateError(rc);
-  }
+  int old_sensorCount = 1;
+  int curr_sensorCount = 0;
 	// Test in Endlosschleife
 	while(1) {
-		rc = sensorDS18B20GetTemperature();
+    rc = sensorDS18B20SearchRom(sensors, &curr_sensorCount);
+    if (rc!=OK) {
+        indicateError(rc);
+    }
+    if (curr_sensorCount != old_sensorCount) {
+      drawAllInfo("DS18B20", sensors, curr_sensorCount);
+    }
+		rc = sensorDS18B20GetTemperature(sensors, curr_sensorCount);
     if (rc!=OK) {
       indicateError(rc);
   }

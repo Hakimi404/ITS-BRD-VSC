@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 void initDisplay();
+void drawAllInfo(char *sensorName, ThermometerDS18B20* sensors, int sensorCount);
 void drawInfo(char* sensorName, uint64_t ID, int sensorNumber);
 void drawTemperatureDS18B20(int sensorCount, bool *tempReaded);
 void convertAllValuesToDisplay(ThermometerDS18B20 *data, int sensorCount);

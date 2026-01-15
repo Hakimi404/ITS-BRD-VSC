@@ -11,8 +11,6 @@ build-idx:
       project: Aufgabe4
       configuration: .Debug+ITSboard
       messages:
-        warnings:
-          - no compiler registered. Add path to compiler 'bin' directory with environment variable <name>_TOOLCHAIN_<major>_<minor>_<patch>. <name> is one of AC6, GCC, IAR, CLANG
         info:
           - Aufgabe4.cbuild-pack.yml - file is already up-to-date
           - Aufgabe4+ITSboard.cbuild-run.yml - file is already up-to-date

@@ -1,8 +1,8 @@
-D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/database.dir
-D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard.dir
-D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-build.dir
-D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-configure.dir
-D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-executes.dir
-D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-database.dir
-D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/edit_cache.dir
-D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/rebuild_cache.dir
+C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/database.dir
+C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard.dir
+C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-build.dir
+C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-configure.dir
+C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-executes.dir
+C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/Aufgabe4.Debug+ITSboard-database.dir
+C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/edit_cache.dir
+C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/CMakeFiles/rebuild_cache.dir

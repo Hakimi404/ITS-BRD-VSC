@@ -186,7 +186,7 @@ project:
         - file: Src/ds18x20Common.c
         - file: Src/sensorDS18B20.c
         - file: Src/sensorDS18S20.c
-        - file: Src/math.c
+        - file: Src/mathe.c
 
   components:
     - component: ARM::CMSIS:CORE

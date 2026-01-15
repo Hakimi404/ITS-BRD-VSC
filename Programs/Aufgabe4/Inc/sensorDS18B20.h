@@ -21,9 +21,9 @@ typedef struct temp {
     float valueCelcius;
 }__attribute__((__packed__)) ThermometerDS18B20;
 
-int sensorDS18B20ReadRom();
-int sensorDS18B20GetTemperature();
-int sensorDS18B20ReadRom();
-int sensorDS18B20SearchRom();
+int sensorDS18B20ReadRom(void);
+int sensorDS18B20GetTemperature(ThermometerDS18B20* sensors, int sensorCount);
+int sensorDS18B20ReadRom(void);
+int sensorDS18B20SearchRom(ThermometerDS18B20 *sensors, int *sensorCount);
 
 #endif

@@ -2603,7 +2603,7 @@ Removing Unused input sections from the image.
     Removing LCD_Demos.o(.ARM.exidx.text.TP_Dialog), (8 bytes).
     Removing LCD_Demos.o(.text.TP_DrawBoard), (514 bytes).
     Removing LCD_Demos.o(.ARM.exidx.text.TP_DrawBoard), (8 bytes).
-    Removing LCD_Demos.o(.rodata.str1.1), (106 bytes).
+    Removing LCD_Demos.o(.rodata.str1.1), (123 bytes).
     Removing LCD_Demos.o(.rodata.cst4), (4 bytes).
     Removing LCD_Demos.o(.data.TP_DrawBoard.brushColor), (2 bytes).
     Removing error.o(.text), (0 bytes).
@@ -2738,7 +2738,7 @@ Removing Unused input sections from the image.
     Removing dfixi.o(.text), (62 bytes).
     Removing dsqrt.o(.text), (162 bytes).
 
-1129 unused section(s) (total 784996 bytes) removed from the image.
+1129 unused section(s) (total 785013 bytes) removed from the image.
 
 ==============================================================================
 
@@ -2790,7 +2790,7 @@ Image Symbol Table
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
     ../fplib/microlib/fpsqrt.c               0x00000000   Number         0  dsqrt.o ABSOLUTE
     ../mathlib/sqrt.c                        0x00000000   Number         0  sqrt.o ABSOLUTE
-    C:/TI_Labor/GSy/ITS-BRD-VSC/ITS_BRD_LIB/Src/startup/startup_stm32f429xx.s 0x00000000   Number         0  startup_stm32f429xx.o ABSOLUTE
+    C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/ITS_BRD_LIB/Src/startup/startup_stm32f429xx.s 0x00000000   Number         0  startup_stm32f429xx.o ABSOLUTE
     Consolas40.c                             0x00000000   Number         0  Consolas40.o ABSOLUTE
     Consolas60.c                             0x00000000   Number         0  Consolas60.o ABSOLUTE
     Consolas80.c                             0x00000000   Number         0  Consolas80.o ABSOLUTE
@@ -3122,24 +3122,24 @@ Image Symbol Table
     [Anonymous Symbol]                       0x08007370   Section        0  USART_STM32F4xx.o(.rodata.USART3_rx)
     USART3_tx                                0x0800737c   Data          12  USART_STM32F4xx.o(.rodata.USART3_tx)
     [Anonymous Symbol]                       0x0800737c   Section        0  USART_STM32F4xx.o(.rodata.USART3_tx)
-    .L.str                                   0x08007427   Data          59  LCD_GUI.o(.rodata.str1.1)
+    .L.str                                   0x08007427   Data          76  LCD_GUI.o(.rodata.str1.1)
     [Anonymous Symbol]                       0x08007427   Section        0  LCD_GUI.o(.rodata.str1.1)
-    .L.str                                   0x08007462   Data          59  LCD_SPI.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x08007462   Section        0  LCD_SPI.o(.rodata.str1.1)
-    .L.str                                   0x0800749d   Data          59  LCD_TIM.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x0800749d   Section        0  LCD_TIM.o(.rodata.str1.1)
-    .L.str.1                                 0x080074d8   Data           6  LCD_Debug.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x080074d8   Section        0  LCD_Debug.o(.rodata.str1.1)
-    .L.str                                   0x080074de   Data          22  LCD_Debug.o(.rodata.str1.1)
-    .L.str                                   0x080074f4   Data           3  lcd.o(.rodata.str1.1)
-    .L.str.1                                 0x080074f4   Data          72  lcd.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x080074f4   Section        0  lcd.o(.rodata.str1.1)
-    .L.str.3                                 0x0800753f   Data           9  main.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x0800753f   Section        0  main.o(.rodata.str1.1)
-    .L.str                                   0x08007548   Data           4  main.o(.rodata.str1.1)
-    .L.str.1                                 0x0800754c   Data          15  main.o(.rodata.str1.1)
-    .L.str.2                                 0x0800755b   Data          26  main.o(.rodata.str1.1)
-    .L.str.4                                 0x08007575   Data           6  main.o(.rodata.str1.1)
+    .L.str                                   0x08007473   Data          76  LCD_SPI.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08007473   Section        0  LCD_SPI.o(.rodata.str1.1)
+    .L.str                                   0x080074bf   Data          76  LCD_TIM.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x080074bf   Section        0  LCD_TIM.o(.rodata.str1.1)
+    .L.str.1                                 0x0800750b   Data           6  LCD_Debug.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x0800750b   Section        0  LCD_Debug.o(.rodata.str1.1)
+    .L.str                                   0x08007511   Data          22  LCD_Debug.o(.rodata.str1.1)
+    .L.str                                   0x08007527   Data           3  lcd.o(.rodata.str1.1)
+    .L.str.1                                 0x08007527   Data          72  lcd.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08007527   Section        0  lcd.o(.rodata.str1.1)
+    .L.str.3                                 0x08007572   Data           9  main.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08007572   Section        0  main.o(.rodata.str1.1)
+    .L.str                                   0x0800757b   Data           4  main.o(.rodata.str1.1)
+    .L.str.1                                 0x0800757f   Data          15  main.o(.rodata.str1.1)
+    .L.str.2                                 0x0800758e   Data          26  main.o(.rodata.str1.1)
+    .L.str.4                                 0x080075a8   Data           6  main.o(.rodata.str1.1)
     .data                                    0x20000000   Section        4  stdout.o(.data)
     crd                                      0x20000030   Data           4  lcd.o(.data.crd)
     [Anonymous Symbol]                       0x20000030   Section        0  lcd.o(.data.crd)
@@ -3433,8 +3433,8 @@ Image Symbol Table
     Driver_USART3                            0x08007304   Data          56  USART_STM32F4xx.o(.rodata.Driver_USART3)
     delta                                    0x08007388   Data          56  berechnung.o(.rodata.delta)
     initCmds                                 0x080073c0   Data         103  LCD_Driver.o(.rodata.initCmds)
-    Region$$Table$$Base                      0x0800757c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800759c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Base                      0x080075b0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080075d0   Number         0  anon$$obj.o(Region$$Table)
     __stdout                                 0x20000000   Data           4  stdout.o(.data)
     Font12FLASH                              0x20000004   Data           8  fontsFLASH.o(.data.Font12FLASH)
     Font16FLASH                              0x2000000c   Data           8  fontsFLASH.o(.data.Font16FLASH)
@@ -3464,9 +3464,9 @@ Memory Map of the image
 
   Image Entry point : 0x080001c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000075f8, Max: 0x00200000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00007628, Max: 0x00200000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000759c, Max: 0x00200000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000075d0, Max: 0x00200000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3736,43 +3736,43 @@ Memory Map of the image
     0x0800737c   0x0800737c   0x0000000c   Data   RO         1549    .rodata.USART3_tx   USART_STM32F4xx.o
     0x08007388   0x08007388   0x00000038   Data   RO         1595    .rodata.delta       berechnung.o
     0x080073c0   0x080073c0   0x00000067   Data   RO         1158    .rodata.initCmds    LCD_Driver.o
-    0x08007427   0x08007427   0x0000003b   Data   RO         1190    .rodata.str1.1      LCD_GUI.o
-    0x08007462   0x08007462   0x0000003b   Data   RO         1254    .rodata.str1.1      LCD_SPI.o
-    0x0800749d   0x0800749d   0x0000003b   Data   RO         1287    .rodata.str1.1      LCD_TIM.o
-    0x080074d8   0x080074d8   0x0000001c   Data   RO         1336    .rodata.str1.1      LCD_Debug.o
-    0x080074f4   0x080074f4   0x0000004b   Data   RO         1390    .rodata.str1.1      lcd.o
-    0x0800753f   0x0800753f   0x0000003c   Data   RO         1577    .rodata.str1.1      main.o
-    0x0800757b   0x0800757b   0x00000001   PAD
-    0x0800757c   0x0800757c   0x00000020   Data   RO         1782    Region$$Table       anon$$obj.o
+    0x08007427   0x08007427   0x0000004c   Data   RO         1190    .rodata.str1.1      LCD_GUI.o
+    0x08007473   0x08007473   0x0000004c   Data   RO         1254    .rodata.str1.1      LCD_SPI.o
+    0x080074bf   0x080074bf   0x0000004c   Data   RO         1287    .rodata.str1.1      LCD_TIM.o
+    0x0800750b   0x0800750b   0x0000001c   Data   RO         1336    .rodata.str1.1      LCD_Debug.o
+    0x08007527   0x08007527   0x0000004b   Data   RO         1390    .rodata.str1.1      lcd.o
+    0x08007572   0x08007572   0x0000003c   Data   RO         1577    .rodata.str1.1      main.o
+    0x080075ae   0x080075ae   0x00000002   PAD
+    0x080075b0   0x080075b0   0x00000020   Data   RO         1782    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080075a0, Size: 0x00000578, Max: 0x00030000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080075d0, Size: 0x00000578, Max: 0x00030000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x080075a0   0x00000004   Data   RW         1743    .data               mc_w.l(stdout.o)
-    0x20000004   0x080075a4   0x00000008   Data   RW         1103    .data.Font12FLASH   fontsFLASH.o
-    0x2000000c   0x080075ac   0x00000008   Data   RW         1102    .data.Font16FLASH   fontsFLASH.o
-    0x20000014   0x080075b4   0x00000008   Data   RW         1101    .data.Font20FLASH   fontsFLASH.o
-    0x2000001c   0x080075bc   0x00000008   Data   RW         1100    .data.Font24FLASH   fontsFLASH.o
-    0x20000024   0x080075c4   0x00000008   Data   RW         1104    .data.Font8FLASH    fontsFLASH.o
-    0x2000002c   0x080075cc   0x00000004   Data   RW           75    .data.SystemCoreClock  system_stm32f4xx.o
-    0x20000030   0x080075d0   0x00000004   Data   RW         1385    .data.crd           lcd.o
-    0x20000034   0x080075d4   0x00000004   Data   RW         1386    .data.fontHeight    lcd.o
-    0x20000038   0x080075d8   0x00000004   Data   RW         1384    .data.fontWidth     lcd.o
-    0x2000003c   0x080075dc   0x00000004   Data   RW         1387    .data.lcdFont       lcd.o
-    0x20000040   0x080075e0   0x00000004   Data   RW         1383    .data.lcdmaxx       lcd.o
-    0x20000044   0x080075e4   0x00000004   Data   RW         1389    .data.lcdmaxy       lcd.o
-    0x20000048   0x080075e8   0x00000004   Data   RW         1255    .data.save_restore_AltFn_SPI1_MOSI_Pin.saved_AF  LCD_SPI.o
-    0x2000004c   0x080075ec   0x00000001   Data   RW          332    .data.uwTickFreq    stm32f4xx_hal.o
-    0x2000004d   0x080075ed   0x00000003   PAD
-    0x20000050   0x080075f0   0x00000004   Data   RW          331    .data.uwTickPrio    stm32f4xx_hal.o
-    0x20000054   0x080075f4   0x00000004   PAD
+    0x20000000   0x080075d0   0x00000004   Data   RW         1743    .data               mc_w.l(stdout.o)
+    0x20000004   0x080075d4   0x00000008   Data   RW         1103    .data.Font12FLASH   fontsFLASH.o
+    0x2000000c   0x080075dc   0x00000008   Data   RW         1102    .data.Font16FLASH   fontsFLASH.o
+    0x20000014   0x080075e4   0x00000008   Data   RW         1101    .data.Font20FLASH   fontsFLASH.o
+    0x2000001c   0x080075ec   0x00000008   Data   RW         1100    .data.Font24FLASH   fontsFLASH.o
+    0x20000024   0x080075f4   0x00000008   Data   RW         1104    .data.Font8FLASH    fontsFLASH.o
+    0x2000002c   0x080075fc   0x00000004   Data   RW           75    .data.SystemCoreClock  system_stm32f4xx.o
+    0x20000030   0x08007600   0x00000004   Data   RW         1385    .data.crd           lcd.o
+    0x20000034   0x08007604   0x00000004   Data   RW         1386    .data.fontHeight    lcd.o
+    0x20000038   0x08007608   0x00000004   Data   RW         1384    .data.fontWidth     lcd.o
+    0x2000003c   0x0800760c   0x00000004   Data   RW         1387    .data.lcdFont       lcd.o
+    0x20000040   0x08007610   0x00000004   Data   RW         1383    .data.lcdmaxx       lcd.o
+    0x20000044   0x08007614   0x00000004   Data   RW         1389    .data.lcdmaxy       lcd.o
+    0x20000048   0x08007618   0x00000004   Data   RW         1255    .data.save_restore_AltFn_SPI1_MOSI_Pin.saved_AF  LCD_SPI.o
+    0x2000004c   0x0800761c   0x00000001   Data   RW          332    .data.uwTickFreq    stm32f4xx_hal.o
+    0x2000004d   0x0800761d   0x00000003   PAD
+    0x20000050   0x08007620   0x00000004   Data   RW          331    .data.uwTickPrio    stm32f4xx_hal.o
+    0x20000054   0x08007624   0x00000004   PAD
     0x20000058        -       0x00000048   Zero   RW          105    .bss.EthHandle      stm32f4xx_it.o
     0x200000a0        -       0x00000014   Zero   RW         1551    .bss.USART3_Info    USART_STM32F4xx.o
     0x200000b4        -       0x00000024   Zero   RW         1552    .bss.USART3_TransferInfo  USART_STM32F4xx.o
     0x200000d8        -       0x00000004   Zero   RW         1636    .bss.aft            input.o
-    0x200000dc   0x080075f4   0x00000004   PAD
+    0x200000dc   0x08007624   0x00000004   PAD
     0x200000e0        -       0x00000008   Zero   RW         1603    .bss.alt_winkel     berechnung.o
     0x200000e8        -       0x00000004   Zero   RW         1602    .bss.alt_zeit       berechnung.o
     0x200000ec        -       0x00000004   Zero   RW         1637    .bss.bef            input.o
@@ -3780,11 +3780,11 @@ Memory Map of the image
     0x200000f8        -       0x00000008   Zero   RW         1601    .bss.geschw_filter  berechnung.o
     0x20000100        -       0x00000008   Zero   RW         1605    .bss.get_winkelgeschw.alt_winkel  berechnung.o
     0x20000108        -       0x00000004   Zero   RW         1604    .bss.get_winkelgeschw.alt_zeit  berechnung.o
-    0x2000010c   0x080075f4   0x00000004   PAD
+    0x2000010c   0x08007624   0x00000004   PAD
     0x20000110        -       0x00000008   Zero   RW         1606    .bss.get_winkelgeschw.letzte_geschw  berechnung.o
     0x20000118        -       0x00000040   Zero   RW         1286    .bss.htim4          LCD_TIM.o
     0x20000158        -       0x00000002   Zero   RW         1388    .bss.lcdColor       lcd.o
-    0x2000015a   0x080075f4   0x00000002   PAD
+    0x2000015a   0x08007624   0x00000002   PAD
     0x2000015c        -       0x00000004   Zero   RW         1598    .bss.phasen         berechnung.o
     0x20000160        -       0x00000004   Zero   RW         1597    .bss.prev           berechnung.o
     0x20000164        -       0x00000004   Zero   RW         1596    .bss.state          berechnung.o
@@ -3801,43 +3801,43 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-        22          0          0          0          0       1122   Gpio.o
-       178          0         28          0          0       1100   LCD_Debug.o
-      1254          0        103          0          0       4559   LCD_Driver.o
-       422          0          0          0          0       2647   LCD_GPIO.o
-      1022          0         59          0          0       6632   LCD_GUI.o
-       612          0         59          4          0       5361   LCD_SPI.o
-       368          0         59          0         64       5950   LCD_TIM.o
-       410          0          0          0          0       3055   LCD_Tools.o
-      8678         52        132          0         56      22405   USART_STM32F4xx.o
-       818         48         56          0         68       2312   berechnung.o
-       232          0          0          0          0       2382   error.o
-        70          0          0          0          0       1223   error_drehgeber.o
-         0          0          0         40          0       1798   fontsFLASH.o
-       524          0          0          0          0       3688   init.o
-       100          0          0          0         12       1872   input.o
-      1048         18         75         24          2       3804   lcd.o
-       502          0         60          0          0       2107   main.o
-       178          0          0          0          0       1867   output.o
-        36          8        428          0       1024        944   startup_stm32f429xx.o
-       174          0          0          0          0       1465   stdinout_USART.o
-       264          0          0          5          4       7799   stm32f4xx_hal.o
-       490          0          0          0          0       9911   stm32f4xx_hal_cortex.o
-       234          0          0          0          0       8685   stm32f4xx_hal_dma.o
-       218          0          0          0          0      15983   stm32f4xx_hal_eth.o
-      1754          0          0          0          0       5402   stm32f4xx_hal_gpio.o
-       190          0          0          0          0       4755   stm32f4xx_hal_pwr_ex.o
-      2586          0          0          0          0       7837   stm32f4xx_hal_rcc.o
-      1888         14          0          0          0      31706   stm32f4xx_hal_tim.o
-       290          0          0          0          0      12909   stm32f4xx_hal_tim_ex.o
-        48          0          0          0         72       4782   stm32f4xx_it.o
-       110          0         24          4          0       2826   system_stm32f4xx.o
-        66          0          0          0          0       1962   timer.o
+        22          0          0          0          0       1194   Gpio.o
+       178          0         28          0          0       1172   LCD_Debug.o
+      1254          0        103          0          0       4665   LCD_Driver.o
+       422          0          0          0          0       2736   LCD_GPIO.o
+      1022          0         76          0          0       6721   LCD_GUI.o
+       612          0         76          4          0       5433   LCD_SPI.o
+       368          0         76          0         64       6039   LCD_TIM.o
+       410          0          0          0          0       3144   LCD_Tools.o
+      8678         52        132          0         56      22528   USART_STM32F4xx.o
+       818         48         56          0         68       2384   berechnung.o
+       232          0          0          0          0       2471   error.o
+        70          0          0          0          0       1295   error_drehgeber.o
+         0          0          0         40          0       1870   fontsFLASH.o
+       524          0          0          0          0       3777   init.o
+       100          0          0          0         12       1944   input.o
+      1048         18         75         24          2       3893   lcd.o
+       502          0         60          0          0       2179   main.o
+       178          0          0          0          0       1956   output.o
+        36          8        428          0       1024        996   startup_stm32f429xx.o
+       174          0          0          0          0       1537   stdinout_USART.o
+       264          0          0          5          4       7905   stm32f4xx_hal.o
+       490          0          0          0          0      10017   stm32f4xx_hal_cortex.o
+       234          0          0          0          0       8774   stm32f4xx_hal_dma.o
+       218          0          0          0          0      16072   stm32f4xx_hal_eth.o
+      1754          0          0          0          0       5491   stm32f4xx_hal_gpio.o
+       190          0          0          0          0       4861   stm32f4xx_hal_pwr_ex.o
+      2586          0          0          0          0       7926   stm32f4xx_hal_rcc.o
+      1888         14          0          0          0      31795   stm32f4xx_hal_tim.o
+       290          0          0          0          0      12998   stm32f4xx_hal_tim_ex.o
+        48          0          0          0         72       4871   stm32f4xx_it.o
+       110          0         24          4          0       2915   system_stm32f4xx.o
+        66          0          0          0          0       2034   timer.o
 
     ----------------------------------------------------------------------
-     24916        140       1118         80       1316     190850   Object Totals
+     24916        140       1170         80       1316     193593   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-       130          0          3          3         14          0   (incl. Padding)
+       130          0          4          3         14          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3899,15 +3899,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     28990        252       1118         84       1316     191586   Grand Totals
-     28990        252       1118         84       1316     191586   ELF Image Totals
-     28990        252       1118         84          0          0   ROM Totals
+     28990        252       1170         84       1316     194329   Grand Totals
+     28990        252       1170         84       1316     194329   ELF Image Totals
+     28990        252       1170         84          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                30108 (  29.40kB)
+    Total RO  Size (Code + RO Data)                30160 (  29.45kB)
     Total RW  Size (RW Data + ZI Data)              1400 (   1.37kB)
-    Total ROM Size (Code + RO Data + RW Data)      30192 (  29.48kB)
+    Total ROM Size (Code + RO Data + RW Data)      30244 (  29.54kB)
 
 ==============================================================================
 

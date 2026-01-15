@@ -213,7 +213,7 @@ add_library(Group_Program_User_Src OBJECT
   "${SOLUTION_ROOT}/Src/ds18x20Common.c"
   "${SOLUTION_ROOT}/Src/sensorDS18B20.c"
   "${SOLUTION_ROOT}/Src/sensorDS18S20.c"
-  "${SOLUTION_ROOT}/Src/math.c"
+  "${SOLUTION_ROOT}/Src/mathe.c"
 )
 target_include_directories(Group_Program_User_Src PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_INCLUDE_DIRECTORIES>

@@ -19,7 +19,11 @@ void initDisplay() {
   lcdGotoXY(30, 0);
   lcdPrintS("Temp. [C]");
 };
-
+void drawAllInfo(char *sensorName, ThermometerDS18B20* sensors, int sensorCount) {
+  for (int i = 0; i < sensorCount; i++) {
+    drawInfo("DS18B20", sensors[i].romID, i + 1);
+  }
+}
 void drawInfo(char *sensorName, uint64_t ID, int sensorNumber) {
   int y = 2 * sensorNumber;
   char textID[MAX_ID_STR_SIZE];

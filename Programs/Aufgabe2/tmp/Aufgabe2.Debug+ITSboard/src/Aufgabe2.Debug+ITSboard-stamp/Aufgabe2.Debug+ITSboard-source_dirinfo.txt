@@ -4,6 +4,6 @@
 
 method=source_dir
 command=
-source_dir=C:/TI_Labor/GSy/ITS-BRD-VSC/Programs/Aufgabe2/tmp/Aufgabe2.Debug+ITSboard
+source_dir=C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe2/tmp/Aufgabe2.Debug+ITSboard
 work_dir=
 
