@@ -9,6 +9,10 @@
 #define MAX_TEMP_STR_SIZE 9
 #define MAX_ID_STR_SIZE 20
 #define EMTPYID "                  "
+#define ERROR_ROWS 2
+#define STARTFONTHEIGHT 16
+#define STARTFONTWIDTH 11
+#define ERR_CLEARROW "           "
 
 struct SensorData {
   char id[MAX_ID_STR_SIZE];
@@ -53,6 +57,19 @@ void drawInfo(char *sensorName, char* ID, int sensorNumber) {
   lcdGotoXY(9, y);
   lcdPrintS(ID);
 }
+
+void writeToError(char *errName, char *msg) {
+  lcdGotoXY(0, (STARTFONTHEIGHT - 1) - ERROR_ROWS); // TODO: Prüfen ob Fontsize geändert werden könnte und an Änderung anpassen
+  lcdPrintlnS("Error: %s"); // TODO: Ein leerzeichen zu viel und snprinf für richtige Formatstrings
+  lcdPrintlnS("Deskription: %s");
+}
+
+void clearError() {
+  lcdGotoXY(0, (STARTFONTHEIGHT - 1) - ERROR_ROWS); // TODO: Prüfen ob Fontsize geändert werden könnte und an Änderung anpassen
+  lcdPrintlnS(ERR_CLEARROW);
+  lcdPrintlnS(ERR_CLEARROW);
+}
+
 void convertAllValuesToDisplay(ThermometerDS18B20 *data, int sensorCount) {
   for (int i = 0; i < sensorCount; i++) {
     snprintf(valuesToDisplay[i].temperature, MAX_TEMP_STR_SIZE, "%.5f", data[i].valueCelcius);
