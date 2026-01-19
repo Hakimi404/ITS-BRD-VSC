@@ -14,9 +14,9 @@
 
 #define OUTPUT_SIZE 8
 
+// Direction LED hold (prevents visible blinking when encoder is moved slowly)
 uint32_t dir_hold_until = 0;
 int last_dir = 0; // +1 forward, -1 backward, 0 none
-
 
 int main(void)
 {
@@ -30,6 +30,9 @@ int main(void)
     //step-based tracking (A5)
     int32_t last_phase_count = 0;
     int step = 0;
+
+    //Speed zero timeout (if no movement for some time -> speed = 0)
+    uint32_t last_move_ms = HAL_GetTick();
 
     //double-read variables (ISR sicherheit)
     uint32_t ts1, ts2;
@@ -85,6 +88,7 @@ int main(void)
             }
 
             last_phase_count = 0;
+            last_move_ms = HAL_GetTick();
             continue;
         }
 
@@ -126,17 +130,40 @@ int main(void)
 
         last_phase_count = c1;
 
-        //Direction LEDs
-        if (step > 0)
-            led_vorwaerts();
-        else if (step < 0)
-            led_rueckwaerts();
-        else
+        //Remember last movement time (for speed -> 0 behavior)
+        if (step != 0) {
+            last_move_ms = HAL_GetTick();
+        }
+
+        //Direction LEDs (with hold time)
+        if (step > 0) {
+            last_dir = 1;
+            dir_hold_until = HAL_GetTick() + 150;
+        } else if (step < 0) {
+            last_dir = -1;
+            dir_hold_until = HAL_GetTick() + 150;
+        }
+
+        if ((int32_t)(HAL_GetTick() - dir_hold_until) <= 0) {
+            if (last_dir > 0)
+                led_vorwaerts();
+            else if (last_dir < 0)
+                led_rueckwaerts();
+            else
+                led_keine_aenderung();
+        } else {
             led_keine_aenderung();
+            last_dir = 0;
+        }
 
         //Calculations
         winkel = get_winkel();
         geschw = get_winkelgeschw(timestamp, winkel, (step != 0));
+
+        //If no movement for 200ms -> force speed to 0.0
+        if ((HAL_GetTick() - last_move_ms) > 200) {
+            geschw = 0.0;
+        }
 
         //Display update
         if (print_idx == 0) {

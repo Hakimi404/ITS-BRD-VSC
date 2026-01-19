@@ -42,8 +42,16 @@ double get_winkelgeschw(uint32_t timestamp_ticks, double winkel, bool change)
         return letzte_geschw;
     }
 
+    // Very small dt values create huge spikes (e.g., 1500+). Clamp for stable demo
+    if (dt < 0.002) { // 2 ms
+        return letzte_geschw;
+    }
+
     double dw = fabs(winkel - alt_winkel);
     double v  = dw / dt;
+
+    // Simple smoothing (low-pass) to avoid jitter
+    v = 0.8 * letzte_geschw + 0.2 * v;
 
     alt_zeit = timestamp_ticks;
     alt_winkel = winkel;

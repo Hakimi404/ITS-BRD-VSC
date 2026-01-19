@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard"
-  "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/1"
-  "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard"
-  "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/tmp"
-  "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp"
-  "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src"
-  "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp"
+  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard"
+  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/1"
+  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard"
+  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/tmp"
+  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp"
+  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src"
+  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/${subDir}")
+    file(MAKE_DIRECTORY "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp${cfgdir}") # cfgdir has leading slash
 endif()
