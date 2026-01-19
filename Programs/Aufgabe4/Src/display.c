@@ -1,15 +1,22 @@
 #include "display.h"
 #include "LCD_GUI.h"
+#include "LCD_general.h"
 #include "global.h"
 #include "lcd.h"
 #include "sensorDS18B20.h"
 #include "stdio.h" 
 #include <string.h>
 #define MAX_TEMP_STR_SIZE 9
-#define MAX_ID_STR_SIZE 18
+#define MAX_ID_STR_SIZE 20
+#define EMTPYID "                  "
 
-char valuesToDisplay[MAX_SUPPORTET_DEVICES][MAX_TEMP_STR_SIZE];
-char prevValuesToDisplay[MAX_SUPPORTET_DEVICES][MAX_TEMP_STR_SIZE];
+struct SensorData {
+  char id[MAX_ID_STR_SIZE];
+  char temperature[MAX_TEMP_STR_SIZE];
+};
+
+struct SensorData valuesToDisplay[MAX_SUPPORTET_DEVICES];
+struct SensorData prevValuesToDisplay[MAX_SUPPORTET_DEVICES];
 
 void initDisplay() {
   lcdGotoXY(0, 0);
@@ -19,23 +26,36 @@ void initDisplay() {
   lcdGotoXY(30, 0);
   lcdPrintS("Temp. [C]");
 };
-void drawAllInfo(char *sensorName, ThermometerDS18B20* sensors, int sensorCount) {
-  for (int i = 0; i < sensorCount; i++) {
-    drawInfo("DS18B20", sensors[i].romID, i + 1);
+void drawAllInfo(char *sensorName, ThermometerDS18B20 *sensors, int sensorCount) {
+  char textID[MAX_ID_STR_SIZE];
+
+  for (int i = 0; i < MAX_SUPPORTET_DEVICES; i++) {
+    if (i < sensorCount) {
+      snprintf(textID, MAX_ID_STR_SIZE, "0x%llX", sensors[i].romID);
+      if (strcmp(textID, prevValuesToDisplay[i].id) != 0) {
+        drawInfo("DS18B20", textID, i + 1);
+        strcpy(prevValuesToDisplay[i].id, textID);
+        strcpy(valuesToDisplay[i].id, textID);
+      }
+    }
+    else if (valuesToDisplay[i].id[0] != '\0') {
+      lcdGotoXY(0, 2 * (i + 1));
+      lcdPrintS(EMTPYID);
+      valuesToDisplay[i].id[0] = '\0';
+      prevValuesToDisplay[i].id[0] = '\0';
+    }
   }
 }
-void drawInfo(char *sensorName, uint64_t ID, int sensorNumber) {
+void drawInfo(char *sensorName, char* ID, int sensorNumber) {
   int y = 2 * sensorNumber;
-  char textID[MAX_ID_STR_SIZE];
   lcdGotoXY(0, y);
   lcdPrintS(sensorName);
   lcdGotoXY(9, y);
-  snprintf(textID, MAX_ID_STR_SIZE, "0x%llX", ID);
-  lcdPrintS(textID);
+  lcdPrintS(ID);
 }
 void convertAllValuesToDisplay(ThermometerDS18B20 *data, int sensorCount) {
   for (int i = 0; i < sensorCount; i++) {
-    snprintf(valuesToDisplay[i], MAX_TEMP_STR_SIZE, "%.5f", data[i].valueCelcius);
+    snprintf(valuesToDisplay[i].temperature, MAX_TEMP_STR_SIZE, "%.5f", data[i].valueCelcius);
   }
 }
 
@@ -44,11 +64,12 @@ void drawTemperatureDS18B20(int sensorCount, bool *tempReaded) {
   static int x = 30;
   int y = 2;
   for (int i = 0; i < sensorCount; i++) {
-    if (currentPos < strlen(valuesToDisplay[i]) && valuesToDisplay[i][currentPos] != prevValuesToDisplay[i][currentPos]) {
-      char toDraw = valuesToDisplay[i][currentPos];
+    bool charDifferent = (valuesToDisplay[i].temperature[currentPos] != prevValuesToDisplay[i].temperature[currentPos]);
+    if ((currentPos < strlen(valuesToDisplay[i].temperature)) && charDifferent) {
+      char toDraw = valuesToDisplay[i].temperature[currentPos];
       lcdGotoXY(x + currentPos, y * (i + 1));
       lcdPrintC(toDraw);
-      prevValuesToDisplay[i][currentPos] = toDraw;
+      prevValuesToDisplay[i].temperature[currentPos] = toDraw;
     }
   }
   currentPos++;

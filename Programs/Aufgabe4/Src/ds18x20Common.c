@@ -69,8 +69,9 @@ int sensorSelect(uint64_t romId)
 }
 
 //Durchsucht den 1-Wire-Bus nach allen angeschlossenen Sensoren. Die gefundenen ROM-IDs werden im Array deviceIDs gespeichert
- int scanOneWireBus(uint64_t *deviceIDs, int *deviceCount)
+ int scanOneWireBus(uint64_t *deviceIDs, int *foundDeviceCount)
 {
+    int deviceCount = 0;
     int result = OK;
 
     //Suchzustand zurücksetzen
@@ -146,9 +147,9 @@ int sensorSelect(uint64_t romId)
         lastConflictBit = newConflictBit;
 
         //Gefundene ROM-ID speichern
-        if (*deviceCount < MAX_SUPPORTET_DEVICES) {
-            deviceIDs[*deviceCount] = currentRomId;
-            (*deviceCount)++;
+        if (deviceCount < MAX_SUPPORTET_DEVICES) {
+            deviceIDs[deviceCount] = currentRomId;
+            (deviceCount)++;
         }
 
         //Keine weiteren Konflikte --> letztes Gerät gefunden
@@ -157,6 +158,7 @@ int sensorSelect(uint64_t romId)
         }
 
     } while (!lastDeviceFound);
-
+    
+    *foundDeviceCount = deviceCount;
     return OK;
 }

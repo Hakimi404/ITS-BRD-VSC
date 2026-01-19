@@ -96,7 +96,7 @@ int sensorDS18B20GetTemperature(ThermometerDS18B20* sensors, int sensorCount)
     int result = OK;
 
     //Wenn noch keine neue Messung gestartet wurde
-    if (!temperatureReadDone) {
+    //if (!temperatureReadDone) {
 
         //Alle Sensoren gleichzeitig starten 
         oneWireReset();
@@ -129,13 +129,13 @@ int sensorDS18B20GetTemperature(ThermometerDS18B20* sensors, int sensorCount)
         // Werte für Anzeige vorbereiten
         convertAllValuesToDisplay(sensors, sensorCount);
 
-        temperatureReadDone = true;
-    }
+        //temperatureReadDone = true;
+    //}
 
     //Temperaturen schrittweise auf dem Display anzeigen 
-    if (temperatureReadDone) {
+    //if (temperatureReadDone) {
         drawTemperatureDS18B20(sensorCount, &temperatureReadDone);
-    }
+    //}
 
     return OK;
 }

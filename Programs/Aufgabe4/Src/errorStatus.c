@@ -23,12 +23,10 @@ void indicateError(int errorCode)
             //Fehler beim Schreiben/Lesen eines Bits
             ledMask = ERROR_LED_BASE << 1;
             break;
-
         case ERR_BIT_FLIPPED:
             //CRC-Fehler: Daten wurden verfälscht
             ledMask = ERROR_LED_BASE << 2;
             break;
-
         case ERR_NO_SENSOR:
             //Kein Sensor auf dem 1-Wire-Bus gefunden
             ledMask = ERROR_LED_BASE << 7;
