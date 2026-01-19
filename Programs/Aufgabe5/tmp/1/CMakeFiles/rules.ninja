@@ -15,7 +15,7 @@
 # Rule for linking C executable.
 
 rule C_EXECUTABLE_LINKER__Aufgabe5.2eDebug.2bITSboard_
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "c:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\armlink.exe" $LINK_FLAGS  --via=$RSP_FILE -o $TARGET_FILE  --list=$TARGET_FILE.map && $POST_BUILD"
+  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && c:\Users\TEMP\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\armlink.exe $LINK_FLAGS  --via=$RSP_FILE -o $TARGET_FILE  --list=$TARGET_FILE.map && $POST_BUILD"
   description = Linking C executable $TARGET_FILE
   rspfile = $RSP_FILE
   rspfile_content = $in $LINK_PATH $LINK_LIBRARIES
@@ -28,7 +28,7 @@ rule C_EXECUTABLE_LINKER__Aufgabe5.2eDebug.2bITSboard_
 rule C_COMPILER__Group_Drivers_BSP_STM32F4xx_Nucleo_144_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}"c:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe" --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}c:\Users\TEMP\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -38,7 +38,7 @@ rule C_COMPILER__Group_Drivers_BSP_STM32F4xx_Nucleo_144_unscanned_
 rule ASM_COMPILER__Group_Drivers_Board_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}"c:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe" $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -c -o $out $in
+  command = ${LAUNCHER}${CODE_CHECK}c:\Users\TEMP\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -c -o $out $in
   description = Building ASM object $out
 
 
@@ -48,7 +48,7 @@ rule ASM_COMPILER__Group_Drivers_Board_unscanned_
 rule C_COMPILER__Group_Drivers_Board_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}"c:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe" --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}c:\Users\TEMP\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -58,7 +58,7 @@ rule C_COMPILER__Group_Drivers_Board_unscanned_
 rule C_COMPILER__Group_Drivers_STM32F4xx_HAL_Driver_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}"c:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe" --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}c:\Users\TEMP\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -68,7 +68,7 @@ rule C_COMPILER__Group_Drivers_STM32F4xx_HAL_Driver_unscanned_
 rule C_COMPILER__Group_Utils_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}"c:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe" --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}c:\Users\TEMP\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -78,7 +78,7 @@ rule C_COMPILER__Group_Utils_unscanned_
 rule C_COMPILER__Group_LCD_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}"c:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe" --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}c:\Users\TEMP\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -88,7 +88,7 @@ rule C_COMPILER__Group_LCD_unscanned_
 rule C_COMPILER__Group_ITS_BRD_LIB_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}"c:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe" --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}c:\Users\TEMP\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -98,7 +98,7 @@ rule C_COMPILER__Group_ITS_BRD_LIB_unscanned_
 rule C_COMPILER__Group_Program_User_Src_unscanned_
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}"c:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe" --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}c:\Users\TEMP\.vcpkg\artifacts\2139c4c6\compilers.arm.armclang\6.24.0\bin\\armclang.exe --target=arm-arm-none-eabi $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -114,7 +114,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe" --regenerate-during-build -SD:\GS_myrepo\ITS-BRD-VSC\Programs\Aufgabe5\tmp\Aufgabe5.Debug+ITSboard -BD:\GS_myrepo\ITS-BRD-VSC\Programs\Aufgabe5\tmp\1
+  command = C:\Users\TEMP\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --regenerate-during-build -SC:\Users\TEMP\Downloads\GS_Hakimi\Programs\Aufgabe5\tmp\Aufgabe5.Debug+ITSboard -BC:\Users\TEMP\Downloads\GS_Hakimi\Programs\Aufgabe5\tmp\1
   description = Re-running CMake...
   generator = 1
 
@@ -123,7 +123,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = "C:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\tools.ninja.build.ninja\1.13.2\ninja.exe" $FILE_ARG -t clean $TARGETS
+  command = C:\Users\TEMP\.vcpkg\artifacts\2139c4c6\tools.ninja.build.ninja\1.13.2\ninja.exe $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -131,6 +131,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = "C:\Users\Abdullah Ahmed\.vcpkg\artifacts\2139c4c6\tools.ninja.build.ninja\1.13.2\ninja.exe" -t targets
+  command = C:\Users\TEMP\.vcpkg\artifacts\2139c4c6\tools.ninja.build.ninja\1.13.2\ninja.exe -t targets
   description = All primary targets available:
 

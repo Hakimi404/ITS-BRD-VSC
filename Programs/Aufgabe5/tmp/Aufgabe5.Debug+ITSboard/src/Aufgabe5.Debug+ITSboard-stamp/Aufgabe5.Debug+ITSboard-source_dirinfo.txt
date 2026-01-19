@@ -4,6 +4,6 @@
 
 method=source_dir
 command=
-source_dir=D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard
+source_dir=C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard
 work_dir=
 

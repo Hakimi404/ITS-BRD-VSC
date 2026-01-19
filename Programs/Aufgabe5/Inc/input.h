@@ -4,14 +4,15 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-/* Shared ISR state */
+// Shared encoder state updated in ISR
 extern volatile uint32_t encoder_timestamp;
 extern volatile int32_t  encoder_phase_count;
+extern volatile uint8_t  encoder_error;
 
-/* ISR entry */
+// Encoder ISR logic (called from EXTI callback)
 void encoder_isr(void);
 
-/* Button */
+// Checks pushbutton S7 (active low)
 bool resetpressed(void);
 
 #endif

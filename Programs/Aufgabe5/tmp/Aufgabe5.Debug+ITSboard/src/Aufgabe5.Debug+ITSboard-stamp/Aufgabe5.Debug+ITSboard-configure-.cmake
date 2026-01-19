@@ -1,11 +1,11 @@
 
 cmake_minimum_required(VERSION 3.15)
 
-set(command "C:/Users/Abdullah Ahmed/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake.exe;-G;Ninja;-S;D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard;-B;D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/1;-DSOLUTION_ROOT=D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5;-DCMSIS_PACK_ROOT=C:/Users/Abdullah Ahmed/AppData/Local/Arm/Packs;-DCMSIS_COMPILER_ROOT=C:/Users/Abdullah Ahmed/.vscode/extensions/arm.cmsis-csolution-1.64.1-win32-x64/tools/cmsis-toolbox/etc")
+set(command "C:/Users/TEMP/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake.exe;-G;Ninja;-S;C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard;-B;C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/1;-DSOLUTION_ROOT=C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5;-DCMSIS_PACK_ROOT=C:/Users/TEMP/AppData/Local/arm/packs;-DCMSIS_COMPILER_ROOT=C:/Users/TEMP/.vscode/extensions/arm.cmsis-csolution-1.64.1-win32-x64/tools/cmsis-toolbox/etc")
 set(log_merged "")
 set(log_output_on_failure "ON")
-set(stdout_log "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/Aufgabe5.Debug+ITSboard-configure-out.log")
-set(stderr_log "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/Aufgabe5.Debug+ITSboard-configure-err.log")
+set(stdout_log "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/Aufgabe5.Debug+ITSboard-configure-out.log")
+set(stderr_log "C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/Aufgabe5.Debug+ITSboard-configure-err.log")
 execute_process(
   COMMAND ${command}
   RESULT_VARIABLE result
@@ -31,7 +31,7 @@ if(result)
   if (${log_merged})
     set(msg "${msg}\nSee also\n  ${stderr_log}")
   else()
-    set(msg "${msg}\nSee also\n  D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/Aufgabe5.Debug+ITSboard-configure-*.log")
+    set(msg "${msg}\nSee also\n  C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/Aufgabe5.Debug+ITSboard-configure-*.log")
   endif()
   if (${log_output_on_failure})
     message(SEND_ERROR "${msg}")
@@ -50,7 +50,7 @@ if(result)
   endif()
 else()
   if(NOT "Ninja" MATCHES "Ninja")
-    set(msg "Aufgabe5.Debug+ITSboard configure command succeeded.  See also D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/Aufgabe5.Debug+ITSboard-configure-*.log")
+    set(msg "Aufgabe5.Debug+ITSboard configure command succeeded.  See also C:/Users/TEMP/Downloads/GS_Hakimi/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/Aufgabe5.Debug+ITSboard-configure-*.log")
     message(STATUS "${msg}")
   endif()
 endif()
