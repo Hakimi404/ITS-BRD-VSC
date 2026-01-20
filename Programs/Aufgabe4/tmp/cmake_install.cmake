@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp
+# Install script for directory: Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe4/tmp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/infwtx851/GSWS_meinrepo/ITS-BRD-VSC/Programs/Aufgabe4/tmp/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe4/tmp/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

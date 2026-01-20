@@ -5,16 +5,20 @@
 #include "lcd.h"
 #include "sensorDS18B20.h"
 #include "stdio.h" 
+#include <stddef.h>
 #include <string.h>
 
 #define MAX_TEMP_STR_SIZE 9
 #define MAX_ID_STR_SIZE 20
+#define TEMP_STARTX 30
+#define TEMP_ENDX (TEMP_STARTX + MAX_TEMP_STR_SIZE)
+#define ROWSBETWEENSENSORS 2
 #define EMTPYID "                  "
 
 #define LCD_FONTHEIGHT 16
 #define LCD_LASTROW ((320 / LCD_FONTHEIGHT) - 1)
 #define LCD_LINESTART 1
-#define LCD_LINEEND 41
+#define LCD_LINEEND 42
 
 #define ERR_CODE_YSTART (LCD_LASTROW - ERR_ROWS)
 #define ERR_MSG_YSTART (LCD_LASTROW - (ERR_ROWS - 1))
@@ -56,8 +60,10 @@ void drawAllInfo(char *sensorName, ThermometerDS18B20 *sensors, int sensorCount)
     else if (valuesToDisplay[i].id[0] != '\0') {
       lcdGotoXY(0, 2 * (i + 1));
       lcdPrintS(EMTPYID);
-      valuesToDisplay[i].id[0] = '\0';
-      prevValuesToDisplay[i].id[0] = '\0';
+      //valuesToDisplay[i].temperature[0] = '\0';
+      //valuesToDisplay[i].id[0] = '\0';
+      memset(prevValuesToDisplay[i].id, 0, sizeof(prevValuesToDisplay[i].id));
+      memset(prevValuesToDisplay[i].temperature, 0, sizeof(prevValuesToDisplay[i].temperature));
     }
   }
 }
@@ -80,23 +86,20 @@ void writeToError(char *errName, char *msg) {
 }
 
 void clearError() {
-  int i = LCD_LINESTART;
+  clearContents(' ', ERR_CODE_YSTART, currentErrorCode, sizeof(currentErrorCode));
+  clearContents(' ', ERR_MSG_YSTART, currentErrorMsg, sizeof(currentErrorMsg));
+}
+
+void clearContents(char blancCh, int contentsStart_y, const char* rowContents, size_t rowContentsSize) {
+  int i = 0;
   bool strEndRead = false;
-  while((i < ERR_CODE_MAXLEN) && (!strEndRead)) {
-    if (currentErrorCode[(i - 1)] != ' ') {
-      lcdGotoXY(i, ERR_CODE_YSTART);
-      lcdPrintC(' ');
+  while(!strEndRead && (i < rowContentsSize)) {
+    if (rowContents[i] != blancCh) {
+      lcdGotoXY(((i + LCD_LINESTART) % LCD_LINEEND), (contentsStart_y + ((i + LCD_LINESTART) / LCD_LINEEND)));
+      lcdPrintC(blancCh);
     }
     i++;
-  }
-  strEndRead = false;
-  i = LCD_LINESTART;
-  while((i < ERR_MSG_MAXLEN) && (!strEndRead)) {
-    if (currentErrorMsg[(i - 1)] != ' ') {
-      lcdGotoXY((i % LCD_LINEEND), (ERR_MSG_YSTART + (i / LCD_LINEEND)));
-      lcdPrintC(' ');
-    }
-    i++;
+    strEndRead = ((rowContents[i - 1]) == '\0');
   }
 }
  
@@ -106,22 +109,16 @@ void convertAllValuesToDisplay(ThermometerDS18B20 *data, int sensorCount) {
   }
 }
 
-void drawTemperatureDS18B20(int sensorCount, bool *tempReaded) {
-  static int currentPos = 0;
-  static int x = 30;
-  int y = 2;
-  for (int i = 0; i < sensorCount; i++) {
-    bool charDifferent = (valuesToDisplay[i].temperature[currentPos] != prevValuesToDisplay[i].temperature[currentPos]);
-    if ((currentPos < strlen(valuesToDisplay[i].temperature)) && charDifferent) {
-      char toDraw = valuesToDisplay[i].temperature[currentPos];
-      lcdGotoXY(x + currentPos, y * (i + 1));
-      lcdPrintC(toDraw);
-      prevValuesToDisplay[i].temperature[currentPos] = toDraw;
+void drawTemperatureDS18B20(int sensorCount, bool *tempRead) {
+  for(int i = 0; i < MAX_TEMP_STR_SIZE; i++) {
+    for (int j = 0; j < sensorCount; j++) {
+      bool charDifferent = (valuesToDisplay[j].temperature[i] != prevValuesToDisplay[j].temperature[i]);
+      if (i < strlen(valuesToDisplay[j].temperature) && charDifferent) {
+        char toDraw = valuesToDisplay[j].temperature[i];
+        lcdGotoXY((TEMP_STARTX + i), (ROWSBETWEENSENSORS * (j + 1)));
+        lcdPrintC(toDraw);
+        prevValuesToDisplay[j].temperature[i] = toDraw;
+      }
     }
-  }
-  currentPos++;
-  if (currentPos == MAX_TEMP_STR_SIZE) {
-    *tempReaded = false;
-    currentPos = 0;
   }
 }

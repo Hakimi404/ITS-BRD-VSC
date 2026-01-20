@@ -23,7 +23,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = C:\Users\infwtx851\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --regenerate-during-build -SC:\Users\infwtx851\GSWS_meinrepo\ITS-BRD-VSC\Programs\Aufgabe4\tmp -BC:\Users\infwtx851\GSWS_meinrepo\ITS-BRD-VSC\Programs\Aufgabe4\tmp
+  command = C:\Users\infwuy827\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --regenerate-during-build -SZ:\Dokumente\Shared_GS_2\ITS-BRD-VSC\Programs\Aufgabe4\tmp -BZ:\Dokumente\Shared_GS_2\ITS-BRD-VSC\Programs\Aufgabe4\tmp
   description = Re-running CMake...
   generator = 1
 
@@ -32,7 +32,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = C:\Users\infwtx851\.vcpkg\artifacts\2139c4c6\tools.ninja.build.ninja\1.13.2\ninja.exe $FILE_ARG -t clean $TARGETS
+  command = C:\Users\infwuy827\.vcpkg\artifacts\2139c4c6\tools.ninja.build.ninja\1.13.2\ninja.exe $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -40,6 +40,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = C:\Users\infwtx851\.vcpkg\artifacts\2139c4c6\tools.ninja.build.ninja\1.13.2\ninja.exe -t targets
+  command = C:\Users\infwuy827\.vcpkg\artifacts\2139c4c6\tools.ninja.build.ninja\1.13.2\ninja.exe -t targets
   description = All primary targets available:
 
