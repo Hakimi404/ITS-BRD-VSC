@@ -9,8 +9,8 @@
  
 // Basiswert für die LEDs (GPIOE) 
 #define ERROR_LED_BASE (1)
-#define ERROR_DISPLAYTIME (500 * US_TO_MS)
-#define US_TO_MS 1000000
+#define ERROR_DISPLAYTIME (5 * US_TO_S)
+#define US_TO_S 1000000
 #define ERRCODE_STR_MAXLEN 5
 
 /*
@@ -26,21 +26,16 @@ void indicateError(int errorCode)
     switch (errorCode)
     {
         case ERR_UNKNOWN_BIT:
-            //Fehler beim Schreiben/Lesen eines Bits
             writeToError("UNKNOWN_BIT", "Fehler beim Lesen/Schreiben eines Bits");
             wait(ERROR_DISPLAYTIME);
             clearError();
-            //ledMask = ERROR_LED_BASE << 1;
             break;
         case ERR_BIT_FLIPPED:
-            //CRC-Fehler: Daten wurden verfälscht
-            writeToError("ERR_BIT_FLIPPED", "Daten wurden Verfälscht");
+            writeToError("ERR_BIT_FLIPPED", "Daten wurden Verfaelscht");
             wait(ERROR_DISPLAYTIME);
             clearError();
-            //ledMask = ERROR_LED_BASE << 2;
             break;
         case ERR_NO_SENSOR:
-            //Kein Sensor auf dem 1-Wire-Bus gefunden
             writeToError("NO_SENSOR", "Kein Sensor auf dem 1-Wire-Bus gefunden");
             wait(ERROR_DISPLAYTIME);
             clearError();
@@ -48,9 +43,8 @@ void indicateError(int errorCode)
             break;
 
         default:
-            //Unbekannter Fehler
             sprintf(errCodeS, "%d", errorCode);
-            writeToError(errCodeS, "Fehlercode stimmt mit keinem Bekannten Fehlercode überein");
+            writeToError(errCodeS, "Fehlercode stimmt mit keinem Bekannten Fehlercode ueberein");
             wait(ERROR_DISPLAYTIME);
             clearError();
             ledMask = ERROR_LED_BASE;

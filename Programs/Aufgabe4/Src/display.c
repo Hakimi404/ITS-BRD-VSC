@@ -6,13 +6,22 @@
 #include "sensorDS18B20.h"
 #include "stdio.h" 
 #include <string.h>
+
 #define MAX_TEMP_STR_SIZE 9
 #define MAX_ID_STR_SIZE 20
 #define EMTPYID "                  "
-#define ERROR_ROWS 2
-#define STARTFONTHEIGHT 16
-#define STARTFONTWIDTH 11
-#define ERR_CLEARROW "           "
+
+#define LCD_FONTHEIGHT 16
+#define LCD_LASTROW ((320 / LCD_FONTHEIGHT) - 1)
+#define LCD_LINESTART 1
+#define LCD_LINEEND 41
+
+#define ERR_CODE_YSTART (LCD_LASTROW - ERR_ROWS)
+#define ERR_MSG_YSTART (LCD_LASTROW - (ERR_ROWS - 1))
+#define ERR_ROWS 4
+#define ERR_PRETEXT_LEN 9
+#define ERR_CODE_MAXLEN (LCD_LINEEND - ERR_PRETEXT_LEN)
+#define ERR_MSG_MAXLEN (LCD_LINEEND * (ERR_ROWS - 1))
 
 struct SensorData {
   char id[MAX_ID_STR_SIZE];
@@ -21,6 +30,8 @@ struct SensorData {
 
 struct SensorData valuesToDisplay[MAX_SUPPORTET_DEVICES];
 struct SensorData prevValuesToDisplay[MAX_SUPPORTET_DEVICES];
+char currentErrorCode[ERR_CODE_MAXLEN];
+char currentErrorMsg[ERR_MSG_MAXLEN];
 
 void initDisplay() {
   lcdGotoXY(0, 0);
@@ -59,17 +70,36 @@ void drawInfo(char *sensorName, char* ID, int sensorNumber) {
 }
 
 void writeToError(char *errName, char *msg) {
-  lcdGotoXY(0, (STARTFONTHEIGHT - 1) - ERROR_ROWS); // TODO: Prüfen ob Fontsize geändert werden könnte und an Änderung anpassen
-  lcdPrintlnS("Error: %s"); // TODO: Ein leerzeichen zu viel und snprinf für richtige Formatstrings
-  lcdPrintlnS("Deskription: %s");
+
+  snprintf(currentErrorCode, sizeof(currentErrorCode), "Error:   %s", errName);
+  lcdGotoXY(LCD_LINESTART, LCD_LASTROW - ERR_ROWS); 
+  lcdPrintlnS(currentErrorCode);
+
+  snprintf(currentErrorMsg, sizeof(currentErrorMsg), "Message: %s", msg);
+  lcdPrintS(currentErrorMsg);
 }
 
 void clearError() {
-  lcdGotoXY(0, (STARTFONTHEIGHT - 1) - ERROR_ROWS); // TODO: Prüfen ob Fontsize geändert werden könnte und an Änderung anpassen
-  lcdPrintlnS(ERR_CLEARROW);
-  lcdPrintlnS(ERR_CLEARROW);
+  int i = LCD_LINESTART;
+  bool strEndRead = false;
+  while((i < ERR_CODE_MAXLEN) && (!strEndRead)) {
+    if (currentErrorCode[(i - 1)] != ' ') {
+      lcdGotoXY(i, ERR_CODE_YSTART);
+      lcdPrintC(' ');
+    }
+    i++;
+  }
+  strEndRead = false;
+  i = LCD_LINESTART;
+  while((i < ERR_MSG_MAXLEN) && (!strEndRead)) {
+    if (currentErrorMsg[(i - 1)] != ' ') {
+      lcdGotoXY((i % LCD_LINEEND), (ERR_MSG_YSTART + (i / LCD_LINEEND)));
+      lcdPrintC(' ');
+    }
+    i++;
+  }
 }
-
+ 
 void convertAllValuesToDisplay(ThermometerDS18B20 *data, int sensorCount) {
   for (int i = 0; i < sensorCount; i++) {
     snprintf(valuesToDisplay[i].temperature, MAX_TEMP_STR_SIZE, "%.5f", data[i].valueCelcius);
