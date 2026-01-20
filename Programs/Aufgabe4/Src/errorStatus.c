@@ -1,5 +1,4 @@
 #include "errorStatus.h"
-#include "stm32f429xx.h"
 #include "timing.h"
 #include "errCodes.h"
 #include "display.h"

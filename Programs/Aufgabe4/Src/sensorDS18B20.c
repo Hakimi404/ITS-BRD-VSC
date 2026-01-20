@@ -4,10 +4,8 @@
 #include "ds18x20Common.h"
 #include "errCodes.h"
 #include "global.h"
-#include "lcd.h"
 #include "mathe.h"
 #include "onewire.h"
-#include "timing.h"
 
 #include <stdint.h>
 #include <stdbool.h>

@@ -1,6 +1,4 @@
 #include "display.h"
-#include "LCD_GUI.h"
-#include "LCD_general.h"
 #include "global.h"
 #include "lcd.h"
 #include "sensorDS18B20.h"
@@ -55,13 +53,12 @@ void drawAllInfo(char *sensorName, ThermometerDS18B20 *sensors, int sensorCount)
         drawInfo("DS18B20", textID, i + 1);
         strcpy(prevValuesToDisplay[i].id, textID);
         strcpy(valuesToDisplay[i].id, textID);
+        memset(prevValuesToDisplay[i].temperature, 0, sizeof(prevValuesToDisplay[i].temperature));
       }
     }
     else if (valuesToDisplay[i].id[0] != '\0') {
       lcdGotoXY(0, 2 * (i + 1));
       lcdPrintS(EMTPYID);
-      //valuesToDisplay[i].temperature[0] = '\0';
-      //valuesToDisplay[i].id[0] = '\0';
       memset(prevValuesToDisplay[i].id, 0, sizeof(prevValuesToDisplay[i].id));
       memset(prevValuesToDisplay[i].temperature, 0, sizeof(prevValuesToDisplay[i].temperature));
     }

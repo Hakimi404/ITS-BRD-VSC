@@ -1,6 +1,4 @@
 #include "ds18x20Common.h"
-#include "crc.h"
-#include "display.h"
 #include "global.h"
 
 #include <stdbool.h>
