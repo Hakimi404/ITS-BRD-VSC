@@ -1,0 +1,19 @@
+@startuml
+
+
+[main.c] --> [input.c]
+[main.c] --> [berechnung.c]
+[main.c] --> [output.c]
+[main.c] --> [error_drehgeber.c]
+[main.c] --> [LCD]
+
+[input.c] --> [gpio.c]
+[input.c] --> [timer.c]
+
+[gpio.c] --> [HAL/EXTI]
+[HAL/EXTI] --> [input.c]
+
+[error_drehgeber.c] --> [berechnung.c]
+[error_drehgeber.c] --> [output.c]
+
+@enduml
