@@ -27,39 +27,20 @@ void indicateError(int errorCode)
         case ERR_UNKNOWN_BIT:
             writeToError("UNKNOWN_BIT", "Fehler beim Lesen/Schreiben eines Bits");
             wait(ERROR_DISPLAYTIME);
-            clearError();
             break;
         case ERR_BIT_FLIPPED:
             writeToError("ERR_BIT_FLIPPED", "Daten wurden Verfaelscht");
             wait(ERROR_DISPLAYTIME);
-            clearError();
             break;
         case ERR_NO_SENSOR:
             writeToError("NO_SENSOR", "Kein Sensor auf dem 1-Wire-Bus gefunden");
             wait(ERROR_DISPLAYTIME);
-            clearError();
-            ledMask = ERROR_LED_BASE << 7;
             break;
 
         default:
             sprintf(errCodeS, "%d", errorCode);
             writeToError(errCodeS, "Fehlercode stimmt mit keinem Bekannten Fehlercode ueberein");
             wait(ERROR_DISPLAYTIME);
-            clearError();
-            ledMask = ERROR_LED_BASE;
             break;
     }
-    /*
-    //Endlosschleife: LED blinkt dauerhaft
-    while (1)
-    {
-        //LED einschalten
-        wait(1000000);
-        GPIOE->BSRR = ledMask;
-
-        //LED ausschalten
-        wait(1000000);
-        GPIOE->BSRR = ledMask << 16;
-    }
-    */
 }
