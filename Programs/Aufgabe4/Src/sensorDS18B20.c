@@ -92,7 +92,10 @@ static int sensorDS18B20ReadScratchpad(ThermometerDS18B20* sensors, int sensorCo
 int sensorDS18B20GetTemperature(ThermometerDS18B20* sensors, int sensorCount)
 {
     int result = OK;
-
+    
+    if (sensorCount <= 0) {
+        return ERR_NO_SENSOR;
+    }
     //Wenn noch keine neue Messung gestartet wurde
     //if (!temperatureReadDone) {
 

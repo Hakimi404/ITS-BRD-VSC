@@ -22,7 +22,7 @@
 static ThermometerDS18B20 sensors[MAX_SUPPORTET_DEVICES];
 static int old_sensorCount = NO_OLDSENSORCOUNT;
 static int curr_sensorCount = 0;
-static int errorOnDisplay = false;
+static int errorOnDisplay = 0;
 
 int main(void) {
 	initITSboard();    // Initialisierung des ITS Boards
@@ -50,7 +50,7 @@ int main(void) {
 
     //temperaturwerte lesen und ausgeben
     rc = sensorDS18B20GetTemperature(sensors, curr_sensorCount);
-		if ((rc != OK) && (rc != errorOnDisplay)) {
+    if ((rc != OK) && (rc != errorOnDisplay)) {
       indicateError(rc);
       errorOnDisplay = rc;
     }

@@ -1,6 +1,7 @@
 #include "input.h"
 #include "gpio.h"
 #include "timer.h"
+#include <stdint.h>
 
 
 volatile uint32_t encoder_timestamp = 0;   // Zeitpunkt (Timer-Ticks) vom letzten gültigen Schritt
@@ -43,13 +44,14 @@ void encoder_isr(void)
     // Read PF0/PF1 (S0/S1) -> phase bits
     // A und B sind hier die zwei Encoder-Leitungen.
     // readGPIOPin liefert 0 oder 1.
+    
     uint8_t a = (uint8_t)readGPIOPin(BUTTON_PORT, S0);
     uint8_t b = (uint8_t)readGPIOPin(BUTTON_PORT, S1);
-
+    
     // Phase ist die 2-Bit Kombination aus A und B.
     // Beispiel: A=1, B=0 -> phase = 2 (10b)
     uint8_t phase = (uint8_t)((a << 1) | b);
-
+    
     // Aus "letzte Phase" und "neue Phase" bestimmen wir Richtung/Schritt
     int8_t step = decode_phase(last_phase, phase);
 
@@ -93,7 +95,7 @@ void encoder_isr(void)
         last_phase = phase;
         return;
     }
-
+    
     // Hier sind wir bei einem gültigen Schritt:
     // step ist +1 oder -1 -> das ist gleichzeitig die Richtung.
     encoder_phase_count += step;
