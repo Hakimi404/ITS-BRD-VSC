@@ -4,15 +4,21 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-// Shared encoder state updated in ISR
-extern volatile uint32_t encoder_timestamp;
-extern volatile int32_t  encoder_phase_count;
-extern volatile uint8_t  encoder_error;
+// Gemeinsamer Encoder-Zustand (shared state):
+// Diese Variablen werden in der Interrupt-Service-Routine (ISR) aktualisiert
+// und in der main-loop ausgelesen.
+// -> volatile ist wichtig, damit der Compiler die Werte nicht cached/optimiert.
+extern volatile uint32_t encoder_timestamp;   // Zeitstempel vom letzten gültigen Schritt (Timer-Ticks)
+extern volatile int32_t  encoder_phase_count; // Schrittzähler: + bei CW, - bei CCW (je nach Decode)
+extern volatile uint8_t  encoder_error;       // Fehlerflag: 1 bedeutet ungültige Übergänge/Noise zu oft
 
-// Encoder ISR logic (called from EXTI callback)
+// Encoder ISR Logik:
+// Wird aus dem EXTI Callback (Interrupt-Kette) aufgerufen.
+// Hier passiert die eigentliche Auswertung der A/B-Phasen und das Hoch-/Runterzählen.
 void encoder_isr(void);
 
-// Checks pushbutton S7 (active low)
+// Prüft den Reset-Taster S7.
+// Active-low heißt: gedrückt -> 0, nicht gedrückt -> 1
 bool resetpressed(void);
 
 #endif
