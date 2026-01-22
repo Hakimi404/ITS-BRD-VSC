@@ -13,7 +13,6 @@ build-idx:
       messages:
         info:
           - Aufgabe5.cbuild-pack.yml - file is already up-to-date
-          - "RTE Model reports:\nConstructed file D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/RTE/_Debug_ITSboard/RTE_Components.h was recreated"
           - Aufgabe5+ITSboard.cbuild-run.yml - file is already up-to-date
           - Aufgabe5.Debug+ITSboard.cbuild.yml - file is already up-to-date
       packs-unused:

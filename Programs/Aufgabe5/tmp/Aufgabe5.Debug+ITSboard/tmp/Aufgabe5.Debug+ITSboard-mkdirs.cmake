@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard"
-  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/1"
-  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard"
-  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/tmp"
-  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp"
-  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src"
-  "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp"
+  "Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard"
+  "Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe5/tmp/1"
+  "Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard"
+  "Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/tmp"
+  "Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp"
+  "Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src"
+  "Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/${subDir}")
+    file(MAKE_DIRECTORY "Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "D:/GS_myrepo/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "Z:/Dokumente/Shared_GS_2/ITS-BRD-VSC/Programs/Aufgabe5/tmp/Aufgabe5.Debug+ITSboard/src/Aufgabe5.Debug+ITSboard-stamp${cfgdir}") # cfgdir has leading slash
 endif()

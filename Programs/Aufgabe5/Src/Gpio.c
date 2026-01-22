@@ -3,7 +3,7 @@
     #include "stm32f429xx.h"
     #include "stm32f4xx_hal.h"
     #include "stm32f4xx_hal_cortex.h"
-#include "stm32f4xx_hal_gpio.h"
+    #include "stm32f4xx_hal_gpio.h"
 
     int readGPIOPin(GPIO_TypeDef *GPIOx, int pin)
     {
@@ -18,6 +18,9 @@
 HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
         RCC->AHB1ENR |= RCC_AHB1ENR_GPIOFEN;
         RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+
+        GPIOE->MODER &= ~(TWOBITCLEAR_MASK << (PIN_0 * MODER_BITPERPIN));
+        GPIOE->MODER |= (0x01 << (PIN_0 * MODER_BITPERPIN));
 
         // PF0 u. PF1 Input
         GPIOF->MODER &= ~(TWOBITCLEAR_MASK << (PIN_0 * MODER_BITPERPIN)); 
