@@ -49,7 +49,7 @@ HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
         // Priorität einstellen und aktivieren
         NVIC_SetPriority(EXTI0_IRQn, 0);
-        NVIC_SetPriority(EXTI1_IRQn, 1);
+        NVIC_SetPriority(EXTI1_IRQn, 0);
         NVIC_EnableIRQ(EXTI0_IRQn);
         NVIC_EnableIRQ(EXTI1_IRQn);
     }
