@@ -3,6 +3,10 @@
 #include "timer.h"
 #include <stdint.h>
 
+#define INVALID_WINDOW_MS        50U   // Zeitfenster in ms für ungültige Übergänge
+#define INVALID_THRESHOLD        10U   // ab wie vielen ungültigen Übergängen -> Fehler
+#define INVALID_CNT_MAX          255U  // max Wert 
+
 
 volatile uint32_t encoder_timestamp = 0;   // Zeitpunkt (Timer-Ticks) vom letzten gültigen Schritt
 volatile int32_t  encoder_phase_count = 0; // Zähler für die Encoder-Schritte (+/- je nach Richtung)
@@ -55,46 +59,29 @@ void encoder_isr(void)
     // Aus "letzte Phase" und "neue Phase" bestimmen wir Richtung/Schritt
     int8_t step = decode_phase(last_phase, phase);
 
-    // step == 0 bedeutet: kein gültiger Schritt erkannt
-    if (step == 0) {
+ if (step == 0) {
+    if (phase != last_phase) {
 
-        // Wenn sich die Phase geändert hat, aber die Tabelle sagt "ungültig",
-        // dann ist das meistens Bounce/Noise oder ein Sprung über mehrere Zustände.
-        if (phase != last_phase) {
+        const uint32_t window_ticks = (uint32_t)(INVALID_WINDOW_MS * 1000U * TICKS_PER_US);
 
-            // Wir zählen ungültige Übergänge in einem kurzen Zeitfenster,
-            // damit nicht jeder einzelne Glitch direkt D21 (Fehler) auslöst.
-            if (invalid_window_start == 0) {
-                // Fenster starten
-                invalid_window_start = now;
-                invalid_cnt = 1;
-            } else {
-                // Wir rechnen mit Timer-Ticks statt HAL_GetTick(), damit alles im selben Zeitmaß bleibt.
-                // 50ms = 50 * 1000us
-                if ((now - invalid_window_start) > (uint32_t)(50 * 1000 * TICKS_PER_US)) {
-                    // Fenster ist abgelaufen -> neu starten
-                    invalid_window_start = now;
-                    invalid_cnt = 1;
-                } else {
-                    // Fenster läuft noch -> hochzählen
-                    if (invalid_cnt < 255) invalid_cnt++;
-                }
-            }
-
-            
-           
-            // Dadurch ist das System "robust" und schaltet nicht bei jeder Kleinigkeit auf Fehler.
-            if (invalid_cnt >= 10) {
-                encoder_error = 1;
-            }
+        // neues Fenster starten, wenn keines aktiv oder Fenster abgelaufen
+        if (invalid_window_start == 0 || (now - invalid_window_start) > window_ticks) {
+            invalid_window_start = now;
+            invalid_cnt = 1;
+        } else {
+            if (invalid_cnt < INVALID_CNT_MAX) invalid_cnt++;
         }
 
-       
-        // Auch bei ungültigem Übergang setzen wir last_phase auf den aktuellen Wert,
-        // damit wir uns wieder "fangen" und nicht in einer Kette aus ungültigen Zuständen hängen bleiben.
-        last_phase = phase;
-        return;
+        if (invalid_cnt >= INVALID_THRESHOLD) {
+            encoder_error = 1;
+        }
     }
+
+    // resync damit wir nicht "festhängen"
+    last_phase = phase;
+    return;
+}
+
     
     // Hier sind wir bei einem gültigen Schritt:
     // step ist +1 oder -1 -> das ist gleichzeitig die Richtung.
